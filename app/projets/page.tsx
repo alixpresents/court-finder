@@ -1,16 +1,24 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
 import { Plus, Film, Pencil, Trash2, Check } from 'lucide-react';
 import { useProject } from '@/context/ProjectContext';
+import { usePlan } from '@/context/PlanContext';
 import Card from '@/components/ui/Card';
 import Badge from '@/components/ui/Badge';
 import Button from '@/components/ui/Button';
 import EmptyState from '@/components/ui/EmptyState';
+import ConfirmDeleteModal from '@/components/ui/ConfirmDeleteModal';
+import UpgradeModal from '@/components/upgrade/UpgradeModal';
 import { GENRE_LABELS, ETAPE_LABELS, GENRE_COLORS } from '@/lib/constants';
+import type { Project } from '@/lib/types';
 
 export default function ProjetsPage() {
   const { projects, activeProject, setActiveProject, deleteProject, isHydrated } = useProject();
+  const { canCreateProject } = usePlan();
+  const [deletingProject, setDeletingProject] = useState<Project | null>(null);
+  const [showUpgrade, setShowUpgrade] = useState(false);
 
   if (!isHydrated) return null;
 
@@ -23,9 +31,19 @@ export default function ProjetsPage() {
             {projects.length} projet{projects.length !== 1 ? 's' : ''} enregistré{projects.length !== 1 ? 's' : ''}.
           </p>
         </div>
-        <Link href="/projet/nouveau">
-          <Button icon={Plus}>Nouveau projet</Button>
-        </Link>
+        {canCreateProject ? (
+          <Link href="/projet/nouveau">
+            <Button icon={Plus}>Nouveau projet</Button>
+          </Link>
+        ) : (
+          <button
+            onClick={() => setShowUpgrade(true)}
+            className="inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm bg-accent/50 text-background cursor-pointer transition-colors hover:bg-accent/60"
+          >
+            <Plus size={16} />
+            Nouveau projet
+          </button>
+        )}
       </div>
 
       {projects.length === 0 ? (
@@ -78,7 +96,7 @@ export default function ProjetsPage() {
                     Modifier
                   </Link>
                   <button
-                    onClick={() => { if (confirm('Supprimer ce projet ?')) deleteProject(p.id); }}
+                    onClick={() => setDeletingProject(p)}
                     className="flex items-center gap-1 rounded-md px-2.5 py-1.5 text-xs text-text-secondary hover:bg-surface-hover hover:text-red-400 transition-colors ml-auto"
                   >
                     <Trash2 size={13} />
@@ -89,6 +107,18 @@ export default function ProjetsPage() {
           })}
         </div>
       )}
+
+      <ConfirmDeleteModal
+        open={!!deletingProject}
+        projectName={deletingProject?.titre ?? ''}
+        onConfirm={() => {
+          if (deletingProject) deleteProject(deletingProject.id);
+          setDeletingProject(null);
+        }}
+        onCancel={() => setDeletingProject(null)}
+      />
+
+      <UpgradeModal open={showUpgrade} onClose={() => setShowUpgrade(false)} />
     </div>
   );
 }

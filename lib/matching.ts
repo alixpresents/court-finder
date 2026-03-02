@@ -26,24 +26,51 @@ function matchDuree(projectDuree: number, dureeMax?: number): number {
   return 0;
 }
 
-function matchRegion(projectRegion: string, targetRegions?: string[]): number {
-  if (!targetRegions || targetRegions.length === 0) return 10;
-  return targetRegions.includes(projectRegion) ? 10 : 0;
+function matchRegion(
+  regionTournage: string,
+  regionProduction: string | undefined,
+  targetRegions?: string[]
+): { score: number; source: 'tournage' | 'production' | 'both' | null } {
+  if (!targetRegions || targetRegions.length === 0)
+    return { score: 10, source: null };
+
+  const tMatch = targetRegions.includes(regionTournage);
+  const pMatch = !!regionProduction && targetRegions.includes(regionProduction);
+
+  if (tMatch && pMatch) return { score: 10, source: 'both' };
+  if (tMatch) return { score: 10, source: 'tournage' };
+  if (pMatch) return { score: 10, source: 'production' };
+  return { score: 0, source: null };
+}
+
+function matchProducer(
+  isAutoProduction: boolean,
+  requiresProducer?: boolean,
+  autoProductionEligible?: boolean
+): { modifier: number; issue: 'requires_producer' | 'boost_auto' | null } {
+  if (!isAutoProduction) return { modifier: 0, issue: null };
+  if (requiresProducer) return { modifier: -20, issue: 'requires_producer' };
+  if (autoProductionEligible) return { modifier: 5, issue: 'boost_auto' };
+  return { modifier: 0, issue: null };
 }
 
 export function matchAide(project: Project, aide: Aide): MatchResult {
+  const regionResult = matchRegion(project.region, project.regionProduction, aide.regions);
+
   const details = {
     genre: matchGenre(project.genre, aide.genres),
     etape: matchEtape(project.etape, aide.etapes),
     profil: matchProfil(project.profilRealisateur, aide.profils),
     budget: matchBudget(project.budget, aide.montantMax, aide.budgetMax),
     duree: matchDuree(project.dureeMinutes, aide.dureeMax),
-    region: matchRegion(project.region, aide.regions),
+    region: regionResult.score,
   };
 
-  const score = details.genre + details.etape + details.profil + details.budget + details.duree + details.region;
+  const baseScore = details.genre + details.etape + details.profil + details.budget + details.duree + details.region;
+  const producer = matchProducer(!!project.autoProduction, aide.requiresProducer, aide.autoProductionEligible);
+  const score = Math.max(0, Math.min(100, baseScore + producer.modifier));
 
-  return { score, details };
+  return { score, details, regionSource: regionResult.source, producerIssue: producer.issue };
 }
 
 export function matchFestival(project: Project, festival: Festival): MatchResult {
@@ -56,7 +83,9 @@ export function matchFestival(project: Project, festival: Festival): MatchResult
     region: 10,
   };
 
-  const score = details.genre + details.etape + details.profil + details.budget + details.duree + details.region;
+  const baseScore = details.genre + details.etape + details.profil + details.budget + details.duree + details.region;
+  const oscarBoost = festival.oscarQualifying ? 5 : 0;
+  const score = Math.min(100, baseScore + oscarBoost);
 
   return { score, details };
 }

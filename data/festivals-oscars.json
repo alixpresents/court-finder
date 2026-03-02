@@ -1,0 +1,1329 @@
+[
+  {
+    "name": "Goya Awards — Academia de las Artes y las Ciencias Cinematográficas de España",
+    "city": "Madrid",
+    "country": "Espagne",
+    "website": "https://www.premiosgoya.com/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short", "Best Documentary Short"]
+  },
+  {
+    "name": "César — Académie des Arts et Techniques du Cinéma",
+    "city": "Paris",
+    "country": "France",
+    "website": "https://www.academie-cinema.org/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short"]
+  },
+  {
+    "name": "Canadian Screen Awards — Academy of Canadian Cinema & Television",
+    "city": "Toronto",
+    "country": "Canada",
+    "website": "https://www.academy.ca/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short", "Best Documentary Short"]
+  },
+  {
+    "name": "BAFTA Short Film Awards",
+    "city": "Londres",
+    "country": "Royaume-Uni",
+    "website": "https://www.bafta.org/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short"]
+  },
+  {
+    "name": "David di Donatello Awards",
+    "city": "Rome",
+    "country": "Italie",
+    "website": "https://www.daviddidonatello.it/",
+    "qualifying_categories": ["Best Live Action Short"]
+  },
+  {
+    "name": "German Short Film Award — Deutscher Kurzfilmpreis",
+    "city": "Berlin",
+    "country": "Allemagne",
+    "website": "https://www.kurzfilm.de/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short", "Best Documentary Short"]
+  },
+  {
+    "name": "Irish Film & Television Awards (IFTA)",
+    "city": "Dublin",
+    "country": "Irlande",
+    "website": "https://www.ifta.ie/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short"]
+  },
+  {
+    "name": "Israel Film Academy — Ophir Awards",
+    "city": "Tel Aviv",
+    "country": "Israël",
+    "website": "https://www.israelfilmacademy.co.il/",
+    "qualifying_categories": ["Best Live Action Short"]
+  },
+  {
+    "name": "Premios Platino del Cine Iberoamericano",
+    "city": "Mexico",
+    "country": "Mexique",
+    "website": "https://www.premiosplatino.com/",
+    "qualifying_categories": ["Best Documentary Short"]
+  },
+  {
+    "name": "Anima — Brussels Animation Film Festival",
+    "city": "Bruxelles",
+    "country": "Belgique",
+    "website": "https://www.animafestival.be/",
+    "qualifying_categories": ["Best Animated Short"]
+  },
+  {
+    "name": "Anima Mundi",
+    "city": "São Paulo",
+    "country": "Brésil",
+    "website": "https://www.animamundi.com.br/",
+    "qualifying_categories": ["Best Animated Short"]
+  },
+  {
+    "name": "Animafest Zagreb",
+    "city": "Zagreb",
+    "country": "Croatie",
+    "website": "https://www.animafest.hr/",
+    "qualifying_categories": ["Best Animated Short"]
+  },
+  {
+    "name": "Animation Dingle",
+    "city": "Dingle",
+    "country": "Irlande",
+    "website": "https://www.animationdingle.com/",
+    "qualifying_categories": ["Best Animated Short"]
+  },
+  {
+    "name": "Anifilm — International Festival of Animated Films",
+    "city": "Liberec",
+    "country": "République tchèque",
+    "website": "https://www.anifilm.cz/",
+    "qualifying_categories": ["Best Animated Short"]
+  },
+  {
+    "name": "Animator International Animated Film Festival",
+    "city": "Poznań",
+    "country": "Pologne",
+    "website": "https://www.animator-festival.com/",
+    "qualifying_categories": ["Best Animated Short"]
+  },
+  {
+    "name": "Animayo",
+    "city": "Las Palmas",
+    "country": "Espagne",
+    "website": "https://www.animayo.com/",
+    "qualifying_categories": ["Best Animated Short"]
+  },
+  {
+    "name": "Animest International Animation Film Festival",
+    "city": "Bucarest",
+    "country": "Roumanie",
+    "website": "https://www.animest.ro/",
+    "qualifying_categories": ["Best Animated Short"]
+  },
+  {
+    "name": "Annecy International Animation Film Festival",
+    "city": "Annecy",
+    "country": "France",
+    "website": "https://www.annecy.org/",
+    "qualifying_categories": ["Best Animated Short"],
+    "existing_id": "annecy"
+  },
+  {
+    "name": "Bucheon International Animation Festival (BIAF)",
+    "city": "Bucheon",
+    "country": "Corée du Sud",
+    "website": "https://www.biaf.or.kr/",
+    "qualifying_categories": ["Best Animated Short"]
+  },
+  {
+    "name": "Chilemonos International Animation Festival",
+    "city": "Santiago",
+    "country": "Chili",
+    "website": "https://www.chilemonos.cl/",
+    "qualifying_categories": ["Best Animated Short"]
+  },
+  {
+    "name": "Cinanima — International Animated Film Festival of Espinho",
+    "city": "Espinho",
+    "country": "Portugal",
+    "website": "https://www.cinanima.pt/",
+    "qualifying_categories": ["Best Animated Short"]
+  },
+  {
+    "name": "Fest Anca — International Animation Festival",
+    "city": "Žilina",
+    "country": "Slovaquie",
+    "website": "https://www.festanca.sk/",
+    "qualifying_categories": ["Best Animated Short"]
+  },
+  {
+    "name": "Hiroshima Animation Season",
+    "city": "Hiroshima",
+    "country": "Japon",
+    "website": "https://animation.hiroshima-festival.org/",
+    "qualifying_categories": ["Best Animated Short"]
+  },
+  {
+    "name": "Kaboom Animation Festival",
+    "city": "Utrecht",
+    "country": "Pays-Bas",
+    "website": "https://www.kaboomfestival.nl/",
+    "qualifying_categories": ["Best Animated Short"]
+  },
+  {
+    "name": "Manchester Animation Festival",
+    "city": "Manchester",
+    "country": "Royaume-Uni",
+    "website": "https://www.manchesteranimationfestival.co.uk/",
+    "qualifying_categories": ["Best Animated Short"]
+  },
+  {
+    "name": "Ottawa International Animation Festival",
+    "city": "Ottawa",
+    "country": "Canada",
+    "website": "https://www.animationfestival.ca/",
+    "qualifying_categories": ["Best Animated Short"]
+  },
+  {
+    "name": "SIGGRAPH Computer Animation Festival",
+    "city": "Los Angeles",
+    "country": "États-Unis",
+    "website": "https://www.siggraph.org/",
+    "qualifying_categories": ["Best Animated Short"]
+  },
+  {
+    "name": "Spark Animation Festival",
+    "city": "Vancouver",
+    "country": "Canada",
+    "website": "https://www.sparkfx.ca/",
+    "qualifying_categories": ["Best Animated Short"]
+  },
+  {
+    "name": "Stuttgart International Festival of Animated Film (ITFS)",
+    "city": "Stuttgart",
+    "country": "Allemagne",
+    "website": "https://www.itfs.de/",
+    "qualifying_categories": ["Best Animated Short"]
+  },
+  {
+    "name": "Aspen Shortsfest",
+    "city": "Aspen",
+    "country": "États-Unis",
+    "website": "https://www.aspenfilm.org/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short", "Best Documentary Short"]
+  },
+  {
+    "name": "Bengaluru International Short Film Festival",
+    "city": "Bengaluru",
+    "country": "Inde",
+    "website": "https://www.bisff.co/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short"]
+  },
+  {
+    "name": "Zinebi — Bilbao International Festival of Documentary and Short Film",
+    "city": "Bilbao",
+    "country": "Espagne",
+    "website": "https://zinebi.eus/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short", "Best Documentary Short"]
+  },
+  {
+    "name": "POFF Shorts — Black Nights Film Festival",
+    "city": "Tallinn",
+    "country": "Estonie",
+    "website": "https://poffshorts.poff.ee/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short"]
+  },
+  {
+    "name": "Bogoshorts — Bogotá Short Film Festival",
+    "city": "Bogotá",
+    "country": "Colombie",
+    "website": "https://www.bogoshorts.com/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short", "Best Documentary Short"]
+  },
+  {
+    "name": "Brussels Short Film Festival",
+    "city": "Bruxelles",
+    "country": "Belgique",
+    "website": "https://www.bsff.be/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short"]
+  },
+  {
+    "name": "Busan International Short Film Festival",
+    "city": "Busan",
+    "country": "Corée du Sud",
+    "website": "https://www.bisff.org/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short"]
+  },
+  {
+    "name": "Clermont-Ferrand International Short Film Festival",
+    "city": "Clermont-Ferrand",
+    "country": "France",
+    "website": "https://clermont-filmfest.org/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short"],
+    "existing_id": "clermont"
+  },
+  {
+    "name": "Curtas Vila do Conde International Film Festival",
+    "city": "Vila do Conde",
+    "country": "Portugal",
+    "website": "https://www.curtasviladoconde.pt/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short"],
+    "existing_id": "vila-do-conde"
+  },
+  {
+    "name": "Drama International Short Film Festival",
+    "city": "Drama",
+    "country": "Grèce",
+    "website": "https://www.dramafilmfestival.gr/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short", "Best Documentary Short"]
+  },
+  {
+    "name": "Encounters Film Festival",
+    "city": "Bristol",
+    "country": "Royaume-Uni",
+    "website": "https://encounters.film/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short"]
+  },
+  {
+    "name": "Flickerfest International Short Film Festival",
+    "city": "Sydney",
+    "country": "Australie",
+    "website": "https://www.flickerfest.com.au/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short", "Best Documentary Short"]
+  },
+  {
+    "name": "Go Short — International Short Film Festival Nijmegen",
+    "city": "Nijmegen",
+    "country": "Pays-Bas",
+    "website": "https://www.goshort.nl/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short", "Best Documentary Short"]
+  },
+  {
+    "name": "Heartland Film — Indy Shorts International Film Festival",
+    "city": "Indianapolis",
+    "country": "États-Unis",
+    "website": "https://heartlandfilm.org/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short", "Best Documentary Short"]
+  },
+  {
+    "name": "HollyShorts Film Festival",
+    "city": "Los Angeles",
+    "country": "États-Unis",
+    "website": "https://www.hollyshorts.com/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short", "Best Documentary Short"]
+  },
+  {
+    "name": "In the Palace International Short Film Festival",
+    "city": "Balchik",
+    "country": "Bulgarie",
+    "website": "https://www.inthepalace.com/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short", "Best Documentary Short"]
+  },
+  {
+    "name": "Interfilm — International Short Film Festival Berlin",
+    "city": "Berlin",
+    "country": "Allemagne",
+    "website": "https://www.interfilm.de/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short"]
+  },
+  {
+    "name": "Izmir International Short Film Festival",
+    "city": "Izmir",
+    "country": "Turquie",
+    "website": "https://www.iksv.org/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short"]
+  },
+  {
+    "name": "LA Shorts International Film Festival",
+    "city": "Los Angeles",
+    "country": "États-Unis",
+    "website": "https://www.lashortsfest.com/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short", "Best Documentary Short"]
+  },
+  {
+    "name": "Festival Internacional de Cine de Lebu",
+    "city": "Lebu",
+    "country": "Chili",
+    "website": "https://www.ficlebu.cl/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short"]
+  },
+  {
+    "name": "Leuven International Short Film Festival",
+    "city": "Louvain",
+    "country": "Belgique",
+    "website": "https://www.shortfilmfestival.be/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short"]
+  },
+  {
+    "name": "Norwegian Short Film Festival",
+    "city": "Grimstad",
+    "country": "Norvège",
+    "website": "https://www.kortfilmfestivalen.no/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short", "Best Documentary Short"]
+  },
+  {
+    "name": "International Short Film Festival Oberhausen",
+    "city": "Oberhausen",
+    "country": "Allemagne",
+    "website": "https://www.kurzfilmtage.de/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short"],
+    "existing_id": "oberhausen"
+  },
+  {
+    "name": "Odense International Film Festival",
+    "city": "Odense",
+    "country": "Danemark",
+    "website": "https://off.dk/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short", "Best Documentary Short"]
+  },
+  {
+    "name": "Palm Springs International ShortFest",
+    "city": "Palm Springs",
+    "country": "États-Unis",
+    "website": "https://www.psfilmfest.org/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short", "Best Documentary Short"]
+  },
+  {
+    "name": "Curta Cinema — Rio de Janeiro International Short Film Festival",
+    "city": "Rio de Janeiro",
+    "country": "Brésil",
+    "website": "https://www.curtacinema.com.br/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short"]
+  },
+  {
+    "name": "Short Shorts Film Festival & Asia",
+    "city": "Tokyo",
+    "country": "Japon",
+    "website": "https://www.shortshorts.org/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short"]
+  },
+  {
+    "name": "Show Me Shorts Film Festival",
+    "city": "Auckland",
+    "country": "Nouvelle-Zélande",
+    "website": "https://www.showmeshorts.co.nz/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short"]
+  },
+  {
+    "name": "Tampere Film Festival",
+    "city": "Tampere",
+    "country": "Finlande",
+    "website": "https://tamperefilmfestival.fi/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short", "Best Documentary Short"],
+    "existing_id": "tampere"
+  },
+  {
+    "name": "Tehran International Short Film Festival",
+    "city": "Téhéran",
+    "country": "Iran",
+    "website": "https://www.tisff.ir/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short"]
+  },
+  {
+    "name": "Uppsala International Short Film Festival",
+    "city": "Uppsala",
+    "country": "Suède",
+    "website": "https://www.shortfilmfestival.com/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short"],
+    "existing_id": "uppsala"
+  },
+  {
+    "name": "VIS Vienna Shorts Festival",
+    "city": "Vienne",
+    "country": "Autriche",
+    "website": "https://www.viennashorts.com/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short"]
+  },
+  {
+    "name": "Internationale Kurzfilmtage Winterthur",
+    "city": "Winterthur",
+    "country": "Suisse",
+    "website": "https://www.kurzfilmtage.ch/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short"]
+  },
+  {
+    "name": "AFI Fest",
+    "city": "Los Angeles",
+    "country": "États-Unis",
+    "website": "https://www.afi.com/afi-fest/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short", "Best Documentary Short"]
+  },
+  {
+    "name": "Alcine — Festival de Cine de Alcalá de Henares",
+    "city": "Alcalá de Henares",
+    "country": "Espagne",
+    "website": "https://www.alcine.org/",
+    "qualifying_categories": ["Best Live Action Short"]
+  },
+  {
+    "name": "Alexandria Short Film Festival",
+    "city": "Alexandrie",
+    "country": "Égypte",
+    "website": "",
+    "qualifying_categories": ["Best Live Action Short"]
+  },
+  {
+    "name": "AMDOCS — Palm Springs American Documentary Film Festival",
+    "city": "Palm Springs",
+    "country": "États-Unis",
+    "website": "https://www.amdocfilmfest.com/",
+    "qualifying_categories": ["Best Animated Short", "Best Documentary Short"]
+  },
+  {
+    "name": "American Black Film Festival",
+    "city": "Miami",
+    "country": "États-Unis",
+    "website": "https://www.abff.com/",
+    "qualifying_categories": ["Best Live Action Short"]
+  },
+  {
+    "name": "Ann Arbor Film Festival",
+    "city": "Ann Arbor",
+    "country": "États-Unis",
+    "website": "https://www.aafilmfest.org/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short"]
+  },
+  {
+    "name": "Athens International Film and Video Festival",
+    "city": "Athens",
+    "country": "États-Unis",
+    "website": "https://www.athensfilmfest.org/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short"]
+  },
+  {
+    "name": "Atlanta Film Festival",
+    "city": "Atlanta",
+    "country": "États-Unis",
+    "website": "https://www.atlantafilmfestival.com/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short", "Best Documentary Short"]
+  },
+  {
+    "name": "Austin Film Festival",
+    "city": "Austin",
+    "country": "États-Unis",
+    "website": "https://www.austinfilmfestival.com/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short", "Best Documentary Short"]
+  },
+  {
+    "name": "Bali International Film Festival",
+    "city": "Bali",
+    "country": "Indonésie",
+    "website": "https://www.balinale.com/",
+    "qualifying_categories": ["Best Live Action Short"]
+  },
+  {
+    "name": "Beirut Shorts International Film Festival",
+    "city": "Beyrouth",
+    "country": "Liban",
+    "website": "",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short", "Best Documentary Short"]
+  },
+  {
+    "name": "BendFilm Festival",
+    "city": "Bend",
+    "country": "États-Unis",
+    "website": "https://www.bendfilm.org/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short"]
+  },
+  {
+    "name": "Berlin International Film Festival — Berlinale Shorts",
+    "city": "Berlin",
+    "country": "Allemagne",
+    "website": "https://www.berlinale.de/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short", "Best Documentary Short"],
+    "existing_id": "berlin-shorts"
+  },
+  {
+    "name": "Bermuda International Film Festival",
+    "city": "Hamilton",
+    "country": "Bermudes",
+    "website": "https://www.biff.bm/",
+    "qualifying_categories": ["Best Live Action Short"]
+  },
+  {
+    "name": "Big Sky Documentary Film Festival",
+    "city": "Missoula",
+    "country": "États-Unis",
+    "website": "https://www.bigskyfilmfest.org/",
+    "qualifying_categories": ["Best Documentary Short"]
+  },
+  {
+    "name": "BlackStar Film Festival",
+    "city": "Philadelphie",
+    "country": "États-Unis",
+    "website": "https://www.blackstarfest.org/",
+    "qualifying_categories": ["Best Live Action Short", "Best Documentary Short"]
+  },
+  {
+    "name": "BronzeLens Film Festival",
+    "city": "Atlanta",
+    "country": "États-Unis",
+    "website": "https://www.bronzelens.com/",
+    "qualifying_categories": ["Best Live Action Short"]
+  },
+  {
+    "name": "Cairo International Film Festival",
+    "city": "Le Caire",
+    "country": "Égypte",
+    "website": "https://www.ciff.org.eg/",
+    "qualifying_categories": ["Best Live Action Short"]
+  },
+  {
+    "name": "Calgary International Film Festival",
+    "city": "Calgary",
+    "country": "Canada",
+    "website": "https://www.calgaryfilm.com/",
+    "qualifying_categories": ["Best Live Action Short"]
+  },
+  {
+    "name": "Camden International Film Festival",
+    "city": "Camden",
+    "country": "États-Unis",
+    "website": "https://www.pointsnorthinstitute.org/",
+    "qualifying_categories": ["Best Documentary Short"]
+  },
+  {
+    "name": "Cannes International Film Festival — Short Film Competition",
+    "city": "Cannes",
+    "country": "France",
+    "website": "https://www.festival-cannes.com/",
+    "qualifying_categories": ["Best Live Action Short", "Best Documentary Short"],
+    "existing_id": "cannes-court"
+  },
+  {
+    "name": "Cartagena de Indias International Film Festival (FICCI)",
+    "city": "Cartagena",
+    "country": "Colombie",
+    "website": "https://www.ficcifestival.com/",
+    "qualifying_categories": ["Best Live Action Short", "Best Documentary Short"]
+  },
+  {
+    "name": "Journées Cinématographiques de Carthage",
+    "city": "Tunis",
+    "country": "Tunisie",
+    "website": "https://www.jfrenchcc.tn/",
+    "qualifying_categories": ["Best Documentary Short"]
+  },
+  {
+    "name": "Chicago International Children's Film Festival",
+    "city": "Chicago",
+    "country": "États-Unis",
+    "website": "https://www.facets.org/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short"]
+  },
+  {
+    "name": "Chicago International Film Festival",
+    "city": "Chicago",
+    "country": "États-Unis",
+    "website": "https://www.chicagofilmfestival.com/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short", "Best Documentary Short"]
+  },
+  {
+    "name": "Cinequest Film & Creativity Festival",
+    "city": "San Jose",
+    "country": "États-Unis",
+    "website": "https://www.cinequest.org/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short"]
+  },
+  {
+    "name": "Cleveland International Film Festival",
+    "city": "Cleveland",
+    "country": "États-Unis",
+    "website": "https://www.clevelandfilm.org/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short", "Best Documentary Short"]
+  },
+  {
+    "name": "Cork International Film Festival",
+    "city": "Cork",
+    "country": "Irlande",
+    "website": "https://www.corkfilmfest.org/",
+    "qualifying_categories": ["Best Live Action Short", "Best Documentary Short"]
+  },
+  {
+    "name": "CPH:DOX — Copenhagen International Documentary Film Festival",
+    "city": "Copenhague",
+    "country": "Danemark",
+    "website": "https://cphdox.dk/",
+    "qualifying_categories": ["Best Documentary Short"]
+  },
+  {
+    "name": "Dallas International Film Festival",
+    "city": "Dallas",
+    "country": "États-Unis",
+    "website": "https://www.dallasfilm.org/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short", "Best Documentary Short"]
+  },
+  {
+    "name": "deadCenter Film Festival",
+    "city": "Oklahoma City",
+    "country": "États-Unis",
+    "website": "https://www.deadcenterfilm.org/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short", "Best Documentary Short"]
+  },
+  {
+    "name": "DMZ International Documentary Film Festival",
+    "city": "Goyang",
+    "country": "Corée du Sud",
+    "website": "https://www.dmzdocs.com/",
+    "qualifying_categories": ["Best Documentary Short"]
+  },
+  {
+    "name": "Doc Edge Festival",
+    "city": "Wellington",
+    "country": "Nouvelle-Zélande",
+    "website": "https://www.docedge.nz/",
+    "qualifying_categories": ["Best Documentary Short"]
+  },
+  {
+    "name": "DOC NYC",
+    "city": "New York",
+    "country": "États-Unis",
+    "website": "https://www.docnyc.net/",
+    "qualifying_categories": ["Best Documentary Short"]
+  },
+  {
+    "name": "DocAviv — International Documentary Film Festival",
+    "city": "Tel Aviv",
+    "country": "Israël",
+    "website": "https://www.docaviv.co.il/",
+    "qualifying_categories": ["Best Documentary Short"]
+  },
+  {
+    "name": "DocLisboa — International Film Festival",
+    "city": "Lisbonne",
+    "country": "Portugal",
+    "website": "https://www.doclisboa.org/",
+    "qualifying_categories": ["Best Documentary Short"]
+  },
+  {
+    "name": "Documenta Madrid",
+    "city": "Madrid",
+    "country": "Espagne",
+    "website": "https://www.documentamadrid.com/",
+    "qualifying_categories": ["Best Documentary Short"]
+  },
+  {
+    "name": "DocVille International Documentary Film Festival",
+    "city": "Louvain",
+    "country": "Belgique",
+    "website": "https://www.docville.be/",
+    "qualifying_categories": ["Best Documentary Short"]
+  },
+  {
+    "name": "Durban International Film Festival",
+    "city": "Durban",
+    "country": "Afrique du Sud",
+    "website": "https://www.durbanfilmfest.co.za/",
+    "qualifying_categories": ["Best Live Action Short", "Best Documentary Short"]
+  },
+  {
+    "name": "Edmonton International Film Festival",
+    "city": "Edmonton",
+    "country": "Canada",
+    "website": "https://www.edmontonfilmfest.com/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short", "Best Documentary Short"]
+  },
+  {
+    "name": "Energa Camerimage — International Film Festival",
+    "city": "Toruń",
+    "country": "Pologne",
+    "website": "https://www.camerimage.pl/",
+    "qualifying_categories": ["Best Documentary Short"]
+  },
+  {
+    "name": "Fantoche — International Animation Film Festival",
+    "city": "Baden",
+    "country": "Suisse",
+    "website": "https://www.fantoche.ch/",
+    "qualifying_categories": ["Best Animated Short"]
+  },
+  {
+    "name": "FESPACO — Festival Panafricain du Cinéma de Ouagadougou",
+    "city": "Ouagadougou",
+    "country": "Burkina Faso",
+    "website": "https://www.fespaco.bf/",
+    "qualifying_categories": ["Best Documentary Short"]
+  },
+  {
+    "name": "Festival du Nouveau Cinéma de Montréal",
+    "city": "Montréal",
+    "country": "Canada",
+    "website": "https://www.nouveaucinema.ca/",
+    "qualifying_categories": ["Best Live Action Short"]
+  },
+  {
+    "name": "FICX — Gijón International Film Festival",
+    "city": "Gijón",
+    "country": "Espagne",
+    "website": "https://www.gijonfilmfestival.com/",
+    "qualifying_categories": ["Best Live Action Short"]
+  },
+  {
+    "name": "Florida Film Festival",
+    "city": "Orlando",
+    "country": "États-Unis",
+    "website": "https://www.floridafilmfestival.com/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short", "Best Documentary Short"]
+  },
+  {
+    "name": "Foyle Film Festival",
+    "city": "Derry",
+    "country": "Royaume-Uni",
+    "website": "https://www.foylefilmfestival.org/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short"]
+  },
+  {
+    "name": "Friss Hús Budapest International Short Film Festival",
+    "city": "Budapest",
+    "country": "Hongrie",
+    "website": "https://www.frisshus.hu/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short"]
+  },
+  {
+    "name": "Full Frame Documentary Film Festival",
+    "city": "Durham",
+    "country": "États-Unis",
+    "website": "https://www.fullframefest.org/",
+    "qualifying_categories": ["Best Documentary Short"]
+  },
+  {
+    "name": "Galway Film Fleadh",
+    "city": "Galway",
+    "country": "Irlande",
+    "website": "https://www.galwayfilmfleadh.com/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short", "Best Documentary Short"]
+  },
+  {
+    "name": "Göteborg Film Festival",
+    "city": "Göteborg",
+    "country": "Suède",
+    "website": "https://goteborgfilmfestival.se/",
+    "qualifying_categories": ["Best Live Action Short", "Best Documentary Short"]
+  },
+  {
+    "name": "Guadalajara International Film Festival (FICG)",
+    "city": "Guadalajara",
+    "country": "Mexique",
+    "website": "https://www.ficg.mx/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short", "Best Documentary Short"]
+  },
+  {
+    "name": "Guanajuato International Film Festival (GIFF)",
+    "city": "San Miguel de Allende",
+    "country": "Mexique",
+    "website": "https://www.gfrench.mx/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short", "Best Documentary Short"]
+  },
+  {
+    "name": "Haifa International Film Festival",
+    "city": "Haïfa",
+    "country": "Israël",
+    "website": "https://www.haifaff.co.il/",
+    "qualifying_categories": ["Best Live Action Short"]
+  },
+  {
+    "name": "Hamptons International Film Festival",
+    "city": "East Hampton",
+    "country": "États-Unis",
+    "website": "https://www.hamptonsfilmfest.org/",
+    "qualifying_categories": ["Best Live Action Short", "Best Documentary Short"]
+  },
+  {
+    "name": "Hawaii International Film Festival",
+    "city": "Honolulu",
+    "country": "États-Unis",
+    "website": "https://www.hiff.org/",
+    "qualifying_categories": ["Best Live Action Short"]
+  },
+  {
+    "name": "Hong Kong International Film Festival",
+    "city": "Hong Kong",
+    "country": "Hong Kong",
+    "website": "https://www.hkiff.org.hk/",
+    "qualifying_categories": ["Best Live Action Short", "Best Documentary Short"]
+  },
+  {
+    "name": "Hot Docs Canadian International Documentary Festival",
+    "city": "Toronto",
+    "country": "Canada",
+    "website": "https://www.hotdocs.ca/",
+    "qualifying_categories": ["Best Documentary Short"]
+  },
+  {
+    "name": "Hot Springs Documentary Film Festival",
+    "city": "Hot Springs",
+    "country": "États-Unis",
+    "website": "https://www.hsdfi.org/",
+    "qualifying_categories": ["Best Documentary Short"]
+  },
+  {
+    "name": "Huesca International Film Festival",
+    "city": "Huesca",
+    "country": "Espagne",
+    "website": "https://www.huesca-filmfestival.com/",
+    "qualifying_categories": ["Best Live Action Short", "Best Documentary Short"]
+  },
+  {
+    "name": "IDFA — International Documentary Film Festival Amsterdam",
+    "city": "Amsterdam",
+    "country": "Pays-Bas",
+    "website": "https://www.idfa.nl/",
+    "qualifying_categories": ["Best Documentary Short"]
+  },
+  {
+    "name": "Imaginaria International Animated Film Festival",
+    "city": "Conversano",
+    "country": "Italie",
+    "website": "https://www.imaginariafestival.it/",
+    "qualifying_categories": ["Best Animated Short"]
+  },
+  {
+    "name": "imagineNATIVE Film + Media Arts Festival",
+    "city": "Toronto",
+    "country": "Canada",
+    "website": "https://www.imaginenative.org/",
+    "qualifying_categories": ["Best Live Action Short"]
+  },
+  {
+    "name": "International Documentary and Short Film Festival Kerala",
+    "city": "Thiruvananthapuram",
+    "country": "Inde",
+    "website": "https://www.idsffk.in/",
+    "qualifying_categories": ["Best Documentary Short"]
+  },
+  {
+    "name": "Sheffield DocFest — International Documentary Festival",
+    "city": "Sheffield",
+    "country": "Royaume-Uni",
+    "website": "https://www.sheffdocfest.com/",
+    "qualifying_categories": ["Best Documentary Short"]
+  },
+  {
+    "name": "DOK Leipzig — International Leipzig Festival for Documentary and Animated Film",
+    "city": "Leipzig",
+    "country": "Allemagne",
+    "website": "https://www.dok-leipzig.de/",
+    "qualifying_categories": ["Best Animated Short", "Best Documentary Short"]
+  },
+  {
+    "name": "It's All True — International Documentary Film Festival",
+    "city": "São Paulo",
+    "country": "Brésil",
+    "website": "https://www.itsalltrue.com.br/",
+    "qualifying_categories": ["Best Documentary Short"]
+  },
+  {
+    "name": "Jerusalem Film Festival",
+    "city": "Jérusalem",
+    "country": "Israël",
+    "website": "https://www.jff.org.il/",
+    "qualifying_categories": ["Best Live Action Short"]
+  },
+  {
+    "name": "Ji.hlava International Documentary Film Festival",
+    "city": "Jihlava",
+    "country": "République tchèque",
+    "website": "https://www.ji-hlava.com/",
+    "qualifying_categories": ["Best Documentary Short"]
+  },
+  {
+    "name": "JIIFF — José Ignacio International Film Festival",
+    "city": "José Ignacio",
+    "country": "Uruguay",
+    "website": "",
+    "qualifying_categories": ["Best Live Action Short"]
+  },
+  {
+    "name": "Krakow Film Festival",
+    "city": "Cracovie",
+    "country": "Pologne",
+    "website": "https://www.krakowfilmfestival.pl/",
+    "qualifying_categories": ["Best Live Action Short", "Best Documentary Short"]
+  },
+  {
+    "name": "Leeds International Film Festival",
+    "city": "Leeds",
+    "country": "Royaume-Uni",
+    "website": "https://www.leedsfilm.com/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short"]
+  },
+  {
+    "name": "Locarno International Film Festival — Pardi di domani",
+    "city": "Locarno",
+    "country": "Suisse",
+    "website": "https://www.locarnofestival.ch/",
+    "qualifying_categories": ["Best Live Action Short"],
+    "existing_id": "locarno"
+  },
+  {
+    "name": "Los Angeles Asian Pacific Film Festival",
+    "city": "Los Angeles",
+    "country": "États-Unis",
+    "website": "https://festival.vcmedia.org/",
+    "qualifying_categories": ["Best Live Action Short", "Best Documentary Short"]
+  },
+  {
+    "name": "LALIFF — Los Angeles Latino International Film Festival",
+    "city": "Los Angeles",
+    "country": "États-Unis",
+    "website": "https://www.laliff.org/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short"]
+  },
+  {
+    "name": "Melbourne International Film Festival (MIFF)",
+    "city": "Melbourne",
+    "country": "Australie",
+    "website": "https://www.miff.com.au/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short", "Best Documentary Short"]
+  },
+  {
+    "name": "Millennium Docs Against Gravity",
+    "city": "Varsovie",
+    "country": "Pologne",
+    "website": "https://www.mdag.pl/",
+    "qualifying_categories": ["Best Documentary Short"]
+  },
+  {
+    "name": "Morelia International Film Festival",
+    "city": "Morelia",
+    "country": "Mexique",
+    "website": "https://www.moreliafilmfest.com/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short", "Best Documentary Short"]
+  },
+  {
+    "name": "Mountainfilm Telluride",
+    "city": "Telluride",
+    "country": "États-Unis",
+    "website": "https://www.mountainfilm.org/",
+    "qualifying_categories": ["Best Documentary Short"]
+  },
+  {
+    "name": "Movies That Matter",
+    "city": "La Haye",
+    "country": "Pays-Bas",
+    "website": "https://www.moviesthatmatter.nl/",
+    "qualifying_categories": ["Best Documentary Short"]
+  },
+  {
+    "name": "Nashville Film Festival",
+    "city": "Nashville",
+    "country": "États-Unis",
+    "website": "https://www.nashvillefilmfestival.org/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short", "Best Documentary Short"]
+  },
+  {
+    "name": "New Hampshire Film Festival",
+    "city": "Portsmouth",
+    "country": "États-Unis",
+    "website": "https://www.nhfilmfestival.com/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short", "Best Documentary Short"]
+  },
+  {
+    "name": "New Orleans Film Festival",
+    "city": "La Nouvelle-Orléans",
+    "country": "États-Unis",
+    "website": "https://www.neworleansfilmfestival.org/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short", "Best Documentary Short"]
+  },
+  {
+    "name": "New York International Children's Film Festival",
+    "city": "New York",
+    "country": "États-Unis",
+    "website": "https://www.nyicff.org/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short"]
+  },
+  {
+    "name": "Nordisk Panorama Film Festival",
+    "city": "Malmö",
+    "country": "Suède",
+    "website": "https://www.nordiskpanorama.com/",
+    "qualifying_categories": ["Best Live Action Short", "Best Documentary Short"]
+  },
+  {
+    "name": "Out on Film — Atlanta's LGBTQ Film Festival",
+    "city": "Atlanta",
+    "country": "États-Unis",
+    "website": "https://www.outonfilm.org/",
+    "qualifying_categories": ["Best Live Action Short"]
+  },
+  {
+    "name": "Outfest Los Angeles LGBTQ Film Festival",
+    "city": "Los Angeles",
+    "country": "États-Unis",
+    "website": "https://www.outfest.org/",
+    "qualifying_categories": ["Best Live Action Short"]
+  },
+  {
+    "name": "Pan African Film & Arts Festival (PAFF)",
+    "city": "Los Angeles",
+    "country": "États-Unis",
+    "website": "https://www.paff.org/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short", "Best Documentary Short"]
+  },
+  {
+    "name": "Provincetown International Film Festival",
+    "city": "Provincetown",
+    "country": "États-Unis",
+    "website": "https://www.provincetownfilm.org/",
+    "qualifying_categories": ["Best Live Action Short", "Best Documentary Short"]
+  },
+  {
+    "name": "Raindance Film Festival",
+    "city": "Londres",
+    "country": "Royaume-Uni",
+    "website": "https://www.raindance.org/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short", "Best Documentary Short"]
+  },
+  {
+    "name": "Reel Sisters of the Diaspora Film Festival",
+    "city": "New York",
+    "country": "États-Unis",
+    "website": "https://www.reelsisters.org/",
+    "qualifying_categories": ["Best Live Action Short"]
+  },
+  {
+    "name": "Regard — Festival international du court métrage au Saguenay",
+    "city": "Saguenay",
+    "country": "Canada",
+    "website": "https://www.regardsurlecourtmetrage.com/",
+    "qualifying_categories": ["Best Live Action Short"]
+  },
+  {
+    "name": "Rhode Island International Film Festival",
+    "city": "Providence",
+    "country": "États-Unis",
+    "website": "https://www.rifilmfest.org/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short"]
+  },
+  {
+    "name": "RiverRun International Film Festival",
+    "city": "Winston-Salem",
+    "country": "États-Unis",
+    "website": "https://www.riverrunfilm.com/",
+    "qualifying_categories": ["Best Animated Short", "Best Documentary Short"]
+  },
+  {
+    "name": "Martha's Vineyard African American Film Festival",
+    "city": "Martha's Vineyard",
+    "country": "États-Unis",
+    "website": "",
+    "qualifying_categories": ["Best Live Action Short"]
+  },
+  {
+    "name": "San Francisco International Film Festival",
+    "city": "San Francisco",
+    "country": "États-Unis",
+    "website": "https://sffilm.org/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short", "Best Documentary Short"]
+  },
+  {
+    "name": "San Francisco Jewish Film Festival",
+    "city": "San Francisco",
+    "country": "États-Unis",
+    "website": "https://www.sfjff.org/",
+    "qualifying_categories": ["Best Documentary Short"]
+  },
+  {
+    "name": "San Jose International Short Film Festival",
+    "city": "San Jose",
+    "country": "États-Unis",
+    "website": "",
+    "qualifying_categories": ["Best Live Action Short"]
+  },
+  {
+    "name": "San Luis Obispo International Film Festival",
+    "city": "San Luis Obispo",
+    "country": "États-Unis",
+    "website": "https://www.slofilmfest.org/",
+    "qualifying_categories": ["Best Documentary Short"]
+  },
+  {
+    "name": "Santa Barbara International Film Festival",
+    "city": "Santa Barbara",
+    "country": "États-Unis",
+    "website": "https://www.sbiff.org/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short", "Best Documentary Short"]
+  },
+  {
+    "name": "Santa Fe International Film Festival",
+    "city": "Santa Fe",
+    "country": "États-Unis",
+    "website": "https://www.santafefilmfestival.com/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short", "Best Documentary Short"]
+  },
+  {
+    "name": "Sarajevo Film Festival",
+    "city": "Sarajevo",
+    "country": "Bosnie-Herzégovine",
+    "website": "https://www.sff.ba/",
+    "qualifying_categories": ["Best Live Action Short", "Best Documentary Short"]
+  },
+  {
+    "name": "Seattle International Film Festival",
+    "city": "Seattle",
+    "country": "États-Unis",
+    "website": "https://www.siff.net/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short", "Best Documentary Short"]
+  },
+  {
+    "name": "Sebastopol Documentary Film Festival",
+    "city": "Sebastopol",
+    "country": "États-Unis",
+    "website": "https://www.sebastopolfilmfestival.org/",
+    "qualifying_categories": ["Best Documentary Short"]
+  },
+  {
+    "name": "Singapore International Film Festival",
+    "city": "Singapour",
+    "country": "Singapour",
+    "website": "https://www.sgiff.com/",
+    "qualifying_categories": ["Best Live Action Short"]
+  },
+  {
+    "name": "Sitges — International Fantastic Film Festival of Catalonia",
+    "city": "Sitges",
+    "country": "Espagne",
+    "website": "https://sitgesfilmfestival.com/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short"]
+  },
+  {
+    "name": "Slamdance Film Festival",
+    "city": "Park City",
+    "country": "États-Unis",
+    "website": "https://www.slamdance.com/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short", "Best Documentary Short"]
+  },
+  {
+    "name": "St. Kilda Film Festival",
+    "city": "Melbourne",
+    "country": "Australie",
+    "website": "https://www.stkildafilmfestival.com.au/",
+    "qualifying_categories": ["Best Live Action Short", "Best Documentary Short"]
+  },
+  {
+    "name": "St. Louis International Film Festival",
+    "city": "Saint-Louis",
+    "country": "États-Unis",
+    "website": "https://www.cinemastlouis.org/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short", "Best Documentary Short"]
+  },
+  {
+    "name": "Sundance Film Festival — Short Film Program",
+    "city": "Park City",
+    "country": "États-Unis",
+    "website": "https://www.sundance.org/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short", "Best Documentary Short"],
+    "existing_id": "sundance-shorts"
+  },
+  {
+    "name": "SXSW Film Festival",
+    "city": "Austin",
+    "country": "États-Unis",
+    "website": "https://www.sxsw.com/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short", "Best Documentary Short"]
+  },
+  {
+    "name": "Sydney Film Festival",
+    "city": "Sydney",
+    "country": "Australie",
+    "website": "https://www.sff.org.au/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short"]
+  },
+  {
+    "name": "Tasveer South Asian Film Festival",
+    "city": "Seattle",
+    "country": "États-Unis",
+    "website": "https://www.tasveerfestival.org/",
+    "qualifying_categories": ["Best Live Action Short"]
+  },
+  {
+    "name": "Thessaloniki International Film Festival",
+    "city": "Thessalonique",
+    "country": "Grèce",
+    "website": "https://www.filmfestival.gr/",
+    "qualifying_categories": ["Best Live Action Short", "Best Documentary Short"]
+  },
+  {
+    "name": "Tirana International Film Festival",
+    "city": "Tirana",
+    "country": "Albanie",
+    "website": "https://www.tiranafilmfest.com/",
+    "qualifying_categories": ["Best Live Action Short"]
+  },
+  {
+    "name": "Toronto International Film Festival (TIFF) — Short Cuts",
+    "city": "Toronto",
+    "country": "Canada",
+    "website": "https://www.tiff.net/",
+    "qualifying_categories": ["Best Live Action Short"]
+  },
+  {
+    "name": "Torino Film Festival — Torino Short Film Market",
+    "city": "Turin",
+    "country": "Italie",
+    "website": "https://www.torinofilmfest.org/",
+    "qualifying_categories": ["Best Live Action Short"]
+  },
+  {
+    "name": "Traverse City Film Festival",
+    "city": "Traverse City",
+    "country": "États-Unis",
+    "website": "https://www.traversecityfilmfest.org/",
+    "qualifying_categories": ["Best Documentary Short"]
+  },
+  {
+    "name": "Tribeca Film Festival",
+    "city": "New York",
+    "country": "États-Unis",
+    "website": "https://www.tribecafilm.com/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short", "Best Documentary Short"]
+  },
+  {
+    "name": "UrbanWorld Film Festival",
+    "city": "New York",
+    "country": "États-Unis",
+    "website": "https://www.urbanworld.org/",
+    "qualifying_categories": ["Best Live Action Short"]
+  },
+  {
+    "name": "Valladolid International Film Festival — Seminci",
+    "city": "Valladolid",
+    "country": "Espagne",
+    "website": "https://www.seminci.es/",
+    "qualifying_categories": ["Best Live Action Short"]
+  },
+  {
+    "name": "Venice International Film Festival — Orizzonti Corti",
+    "city": "Venise",
+    "country": "Italie",
+    "website": "https://www.labiennale.org/en/cinema/",
+    "qualifying_categories": ["Best Live Action Short"],
+    "existing_id": "venise-horizons"
+  },
+  {
+    "name": "Visions du Réel — International Film Festival Nyon",
+    "city": "Nyon",
+    "country": "Suisse",
+    "website": "https://www.vfrenchdureel.ch/",
+    "qualifying_categories": ["Best Documentary Short"]
+  },
+  {
+    "name": "Warsaw Film Festival",
+    "city": "Varsovie",
+    "country": "Pologne",
+    "website": "https://www.wff.pl/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short", "Best Documentary Short"]
+  },
+  {
+    "name": "Woodstock Film Festival",
+    "city": "Woodstock",
+    "country": "États-Unis",
+    "website": "https://www.woodstockfilmfestival.org/",
+    "qualifying_categories": ["Best Live Action Short", "Best Animated Short", "Best Documentary Short"]
+  },
+  {
+    "name": "BitBang International Animation Festival",
+    "city": "Buenos Aires",
+    "country": "Argentine",
+    "website": "",
+    "qualifying_categories": ["Best Animated Short"]
+  }
+]

@@ -2,12 +2,13 @@
 
 import { use } from 'react';
 import { notFound } from 'next/navigation';
-import { Plus, Check } from 'lucide-react';
+import { Plus, Check, AlertTriangle } from 'lucide-react';
 import { festivals } from '@/data/festivals';
 import { useProject } from '@/context/ProjectContext';
 import { useSubmissions } from '@/context/SubmissionsContext';
 import { matchFestival } from '@/lib/matching';
-import { FESTIVAL_CATEGORIE_LABELS, GENRE_LABELS } from '@/lib/constants';
+import { detectPremiereConflicts } from '@/lib/premieres';
+import { FESTIVAL_CATEGORIE_LABELS, GENRE_LABELS, PREMIERE_TYPE_LABELS, PREMIERE_TYPE_COLORS } from '@/lib/constants';
 import DetailHeader from '@/components/detail/DetailHeader';
 import EligibilitySection from '@/components/detail/EligibilitySection';
 import DocumentsList from '@/components/detail/DocumentsList';
@@ -26,6 +27,7 @@ export default function FestivalDetailPage({ params }: { params: Promise<{ id: s
 
   const match = activeProject ? matchFestival(activeProject, festival) : undefined;
   const alreadyTracked = submissions.some((s) => s.targetId === festival.id);
+  const conflicts = detectPremiereConflicts(festival.id, submissions);
 
   function handleTrack() {
     if (!activeProject || alreadyTracked) return;
@@ -39,6 +41,8 @@ export default function FestivalDetailPage({ params }: { params: Promise<{ id: s
       notes: '',
     });
   }
+
+  const premiereMet = festival.premiereType === 'aucune';
 
   const criteria = activeProject ? [
     {
@@ -57,9 +61,13 @@ export default function FestivalDetailPage({ params }: { params: Promise<{ id: s
       detail: festival.dureeMax ? `Max ${festival.dureeMax} min` : undefined,
     },
     {
-      label: festival.premiereRequise ? 'Première mondiale requise' : 'Pas de première requise',
-      met: !festival.premiereRequise,
-      detail: festival.premiereRequise ? 'Ce festival exige une première mondiale ou internationale' : undefined,
+      label: festival.premiereType !== 'aucune'
+        ? PREMIERE_TYPE_LABELS[festival.premiereType]
+        : 'Pas de première requise',
+      met: premiereMet,
+      detail: festival.premiereType !== 'aucune'
+        ? `Ce festival exige une ${PREMIERE_TYPE_LABELS[festival.premiereType].toLowerCase()}`
+        : undefined,
     },
   ] : [];
 
@@ -72,8 +80,10 @@ export default function FestivalDetailPage({ params }: { params: Promise<{ id: s
         subtitle={`${festival.ville}, ${festival.pays}`}
         badges={[
           { label: FESTIVAL_CATEGORIE_LABELS[festival.categorie], className: 'bg-festival/10 text-festival' },
-          ...(festival.premiereRequise ? [{ label: 'Première requise', className: 'bg-purple-500/15 text-purple-400' }] : []),
-          ...(festival.fraisInscription ? [{ label: 'Frais d\'inscription', className: 'bg-amber-500/15 text-amber-400' }] : []),
+          ...(festival.oscarQualifying ? [{ label: 'Oscar Qualifying 🏆', className: 'bg-amber-500/15 text-amber-300' }] : []),
+          ...(festival.premiereType !== 'aucune' ? [{ label: PREMIERE_TYPE_LABELS[festival.premiereType], className: PREMIERE_TYPE_COLORS[festival.premiereType] }] : []),
+          ...(festival.fraisInscription ? [{ label: festival.fraisMontant ? `Frais : ${festival.fraisMontant} $` : 'Frais d\'inscription', className: 'bg-amber-500/15 text-amber-400' }] : []),
+          ...(festival.nbFilmsSoumis != null && festival.nbFilmsSelectionnes != null ? [{ label: `${festival.nbFilmsSelectionnes}/${festival.nbFilmsSoumis.toLocaleString('fr-FR')} sélectionnés`, className: 'bg-white/5 text-text-muted' }] : []),
         ]}
         match={match}
         lienOfficiel={festival.lienOfficiel}
@@ -81,12 +91,36 @@ export default function FestivalDetailPage({ params }: { params: Promise<{ id: s
 
       <p className="text-sm text-text-secondary mb-6 max-w-3xl">{festival.description}</p>
 
+      {festival.oscarQualifying && festival.qualifyingCategories && (
+        <div className="mb-6 rounded-lg border border-amber-500/20 bg-amber-500/5 px-4 py-3">
+          <p className="text-sm font-medium text-amber-300 mb-1">🏆 Ce festival qualifie pour les Oscars</p>
+          <p className="text-sm text-amber-300/80">
+            Catégories : {festival.qualifyingCategories.join(', ')}
+          </p>
+        </div>
+      )}
+
       {activeProject && (
-        <div className="mb-6">
-          {alreadyTracked ? (
-            <Button variant="secondary" icon={Check} disabled>Soumission suivie</Button>
-          ) : (
-            <Button icon={Plus} onClick={handleTrack}>Suivre cette soumission</Button>
+        <div className="mb-6 space-y-3">
+          <div>
+            {alreadyTracked ? (
+              <Button variant="secondary" icon={Check} disabled>Soumission suivie</Button>
+            ) : (
+              <Button icon={Plus} onClick={handleTrack}>Suivre cette soumission</Button>
+            )}
+          </div>
+          {conflicts.length > 0 && (
+            <div className="flex items-start gap-3 rounded-lg border border-red-500/20 bg-red-500/5 px-4 py-3 text-red-400">
+              <AlertTriangle size={16} className="shrink-0 mt-0.5" />
+              <div className="text-sm">
+                <p className="font-medium mb-1">Conflit de première</p>
+                <ul className="list-disc list-inside space-y-0.5 text-red-400/80">
+                  {conflicts.map((c) => (
+                    <li key={c.festivalId}>{c.message}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
           )}
         </div>
       )}
@@ -98,6 +132,10 @@ export default function FestivalDetailPage({ params }: { params: Promise<{ id: s
           dateEvent={festival.dateEvent}
           extraInfo={[
             ...(festival.dureeMax ? [{ label: 'Durée max', value: `${festival.dureeMax} min` }] : []),
+            ...(festival.deadlineOuverture ? [{ label: 'Ouverture soumissions', value: festival.deadlineOuverture }] : []),
+            ...(festival.nbFilmsSoumis != null ? [{ label: 'Films soumis', value: festival.nbFilmsSoumis.toLocaleString('fr-FR') }] : []),
+            ...(festival.nbFilmsSelectionnes != null ? [{ label: 'Films sélectionnés', value: `${festival.nbFilmsSelectionnes}` }] : []),
+            ...(festival.fraisMontant ? [{ label: 'Frais d\'inscription', value: `${festival.fraisMontant} $` }] : []),
           ]}
         />
         <DocumentsList documents={festival.documents} />

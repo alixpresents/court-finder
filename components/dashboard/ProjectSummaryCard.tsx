@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Film, Pencil } from 'lucide-react';
+import { Film, Pencil, PiggyBank } from 'lucide-react';
 import Card from '@/components/ui/Card';
 import Badge from '@/components/ui/Badge';
 import { useProject } from '@/context/ProjectContext';
@@ -31,13 +31,22 @@ export default function ProjectSummaryCard() {
             </div>
           </div>
         </div>
-        <Link
-          href={`/projet/${activeProject.id}`}
-          className="flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs text-text-secondary hover:bg-surface-hover hover:text-text-primary transition-colors"
-        >
-          <Pencil size={14} />
-          Modifier
-        </Link>
+        <div className="flex items-center gap-2">
+          <Link
+            href={`/projet/${activeProject.id}/financement`}
+            className="flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs text-text-secondary hover:bg-surface-hover hover:text-text-primary transition-colors"
+          >
+            <PiggyBank size={14} />
+            Financement
+          </Link>
+          <Link
+            href={`/projet/${activeProject.id}`}
+            className="flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs text-text-secondary hover:bg-surface-hover hover:text-text-primary transition-colors"
+          >
+            <Pencil size={14} />
+            Modifier
+          </Link>
+        </div>
       </div>
     </Card>
   );

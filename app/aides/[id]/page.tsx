@@ -4,6 +4,7 @@ import { use } from 'react';
 import { notFound } from 'next/navigation';
 import { Plus, Check } from 'lucide-react';
 import { aides } from '@/data/aides';
+import { REGIONS } from '@/data/regions';
 import { useProject } from '@/context/ProjectContext';
 import { useSubmissions } from '@/context/SubmissionsContext';
 import { matchAide } from '@/lib/matching';
@@ -40,6 +41,64 @@ export default function AideDetailPage({ params }: { params: Promise<{ id: strin
     });
   }
 
+  const regionLabel = (slug: string) =>
+    REGIONS.find((r) => r.value === slug)?.label ?? slug;
+
+  const buildRegionCriteria = () => {
+    if (!activeProject || !aide.regions || aide.regions.length === 0) {
+      return [{ label: 'Région : toutes régions', met: true, detail: 'Toutes régions' }];
+    }
+
+    const rTournage = activeProject.region;
+    const rProd = activeProject.regionProduction;
+    const hasTwoDistinctRegions = rProd && rProd !== rTournage;
+
+    if (hasTwoDistinctRegions) {
+      const tMet = aide.regions.includes(rTournage);
+      const pMet = aide.regions.includes(rProd);
+      return [
+        {
+          label: `Région tournage : ${regionLabel(rTournage)}`,
+          met: tMet,
+          detail: tMet ? 'Éligible via lieu de tournage' : 'Non éligible via lieu de tournage',
+        },
+        {
+          label: `Région production : ${regionLabel(rProd)}`,
+          met: pMet,
+          detail: pMet ? 'Éligible via siège production' : 'Non éligible via siège production',
+        },
+      ];
+    }
+
+    const met = aide.regions.includes(rTournage) || (!!rProd && aide.regions.includes(rProd));
+    return [
+      {
+        label: `Région : ${regionLabel(rTournage)}`,
+        met,
+        detail: aide.regions.length ? `Régions : ${aide.regions.map(regionLabel).join(', ')}` : 'Toutes régions',
+      },
+    ];
+  };
+
+  const buildProducerCriteria = () => {
+    if (!activeProject) return [];
+    if (aide.requiresProducer && activeProject.autoProduction) {
+      return [{
+        label: 'Producteur délégué requis',
+        met: false,
+        detail: 'Cette aide nécessite une société de production',
+      }];
+    }
+    if (aide.autoProductionEligible && activeProject.autoProduction) {
+      return [{
+        label: 'Accessible en auto-production',
+        met: true,
+        detail: 'Cette aide est ouverte aux projets sans producteur',
+      }];
+    }
+    return [];
+  };
+
   const criteria = activeProject ? [
     {
       label: `Genre : ${GENRE_LABELS[activeProject.genre]}`,
@@ -59,11 +118,8 @@ export default function AideDetailPage({ params }: { params: Promise<{ id: strin
       met: !aide.dureeMax || activeProject.dureeMinutes <= aide.dureeMax,
       detail: aide.dureeMax ? `Max ${aide.dureeMax} min` : undefined,
     },
-    {
-      label: `Région : ${activeProject.region}`,
-      met: !aide.regions || aide.regions.length === 0 || aide.regions.includes(activeProject.region),
-      detail: aide.regions?.length ? `Régions : ${aide.regions.join(', ')}` : 'Toutes régions',
-    },
+    ...buildRegionCriteria(),
+    ...buildProducerCriteria(),
   ] : [];
 
   const montant = `${aide.montantMin.toLocaleString('fr-FR')} – ${aide.montantMax.toLocaleString('fr-FR')} €`;
@@ -78,6 +134,7 @@ export default function AideDetailPage({ params }: { params: Promise<{ id: strin
         badges={[
           { label: AIDE_TYPE_LABELS[aide.type], className: AIDE_TYPE_COLORS[aide.type] },
           { label: montant, className: 'bg-accent/10 text-accent' },
+          ...(aide.tauxSelection != null ? [{ label: `~${aide.tauxSelection}% sélection`, className: 'bg-white/5 text-text-muted' }] : []),
         ]}
         match={match}
         lienOfficiel={aide.lienOfficiel}
@@ -101,6 +158,8 @@ export default function AideDetailPage({ params }: { params: Promise<{ id: strin
           deadline={aide.deadline}
           extraInfo={[
             { label: 'Montant', value: montant },
+            ...(aide.session ? [{ label: 'Session', value: aide.session }] : []),
+            ...(aide.tauxSelection != null ? [{ label: 'Taux de sélection', value: `~${aide.tauxSelection}%` }] : []),
             ...(aide.dureeMax ? [{ label: 'Durée max', value: `${aide.dureeMax} min` }] : []),
           ]}
         />

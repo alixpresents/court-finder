@@ -29,6 +29,11 @@ export interface Project {
   budget: number;
   profilRealisateur: ProfilRealisateur;
   region: Region;
+  lieuTournage?: string;
+  productionNom?: string;
+  productionVille?: string;
+  regionProduction?: string;
+  autoProduction?: boolean;
   createdAt: string;
 }
 
@@ -49,12 +54,23 @@ export interface Aide {
   budgetMax?: number;
   regions?: Region[];
   deadline: string;
+  session?: string;
+  tauxSelection?: number;
   documents: string[];
   proTips: string[];
   lienOfficiel: string;
+  requiresProducer?: boolean;
+  autoProductionEligible?: boolean;
 }
 
 export type FestivalCategorie = 'A' | 'B' | 'C';
+
+export type PremiereType =
+  | 'mondiale'
+  | 'internationale'
+  | 'europeenne'
+  | 'nationale'
+  | 'aucune';
 
 export interface Festival {
   id: string;
@@ -65,14 +81,22 @@ export interface Festival {
   description: string;
   genres: Genre[];
   dureeMax?: number;
-  premiereRequise: boolean;
+  premiereType: PremiereType;
   fraisInscription: boolean;
+  fraisMontant?: number;
   deadline: string;
+  deadlineOuverture?: string;
   dateEvent: string;
+  nbFilmsSoumis?: number;
+  nbFilmsSelectionnes?: number;
   documents: string[];
   proTips: string[];
   lienOfficiel: string;
+  oscarQualifying?: boolean;
+  qualifyingCategories?: string[];
 }
+
+export type OscarCategory = 'Best Live Action Short' | 'Best Animated Short' | 'Best Documentary Short';
 
 export type SubmissionStatus =
   | 'brouillon'
@@ -104,6 +128,24 @@ export interface MatchResult {
     duree: number;
     region: number;
   };
+  regionSource?: 'tournage' | 'production' | 'both' | null;
+  producerIssue?: 'requires_producer' | 'boost_auto' | null;
+}
+
+export type FinancementCategory =
+  | 'aide_publique'
+  | 'apport_producteur'
+  | 'crowdfunding'
+  | 'pre_achats'
+  | 'industrie_technique'
+  | 'apport_personnel';
+
+export interface FinancementSource {
+  id: string;
+  aideId?: string;
+  label: string;
+  montant: number;
+  category: FinancementCategory;
 }
 
 export interface CalendarEvent {

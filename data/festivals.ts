@@ -1,6 +1,7 @@
-import type { Festival } from '@/lib/types';
+import type { Festival, Genre } from '@/lib/types';
+import oscarData from './festivals-oscars.json';
 
-export const festivals: Festival[] = [
+const curatedFestivals: Festival[] = [
   {
     id: 'cannes-court',
     nom: 'Festival de Cannes — Compétition court métrage',
@@ -10,13 +11,18 @@ export const festivals: Festival[] = [
     description: 'La Palme d\'Or du court métrage est la récompense la plus prestigieuse au monde. Sélection ultra-compétitive parmi des milliers de films.',
     genres: ['fiction', 'animation', 'experimental'],
     dureeMax: 15,
-    premiereRequise: true,
+    premiereType: 'mondiale',
     fraisInscription: false,
     deadline: '2026-03-20',
+    deadlineOuverture: '2025-10-01',
     dateEvent: '2026-05-12',
+    nbFilmsSoumis: 4800,
+    nbFilmsSelectionnes: 9,
     documents: ['DCP', 'Lien de visionnage sécurisé', 'Fiche technique', 'Photos du film', 'Bio réalisateur'],
     proTips: ['Première mondiale obligatoire', 'Durée max stricte de 15 minutes', 'Soumettez tôt — la sélection est continue', 'Un bon générique et un DCP impeccable sont essentiels'],
     lienOfficiel: 'https://www.festival-cannes.com/',
+    oscarQualifying: true,
+    qualifyingCategories: ['Best Live Action Short', 'Best Documentary Short'],
   },
   {
     id: 'clermont',
@@ -27,13 +33,18 @@ export const festivals: Festival[] = [
     description: 'Le plus grand festival de courts métrages au monde. Trois compétitions : nationale, internationale et labo. Marché du film incontournable.',
     genres: ['fiction', 'documentaire', 'animation', 'experimental'],
     dureeMax: 40,
-    premiereRequise: false,
+    premiereType: 'aucune',
     fraisInscription: false,
     deadline: '2026-09-15',
+    deadlineOuverture: '2026-05-01',
     dateEvent: '2027-01-30',
+    nbFilmsSoumis: 9200,
+    nbFilmsSelectionnes: 170,
     documents: ['Lien de visionnage', 'Fiche technique', 'Synopsis FR/EN', 'Photos', 'Affiche'],
-    proTips: ['Le marché du film est une opportunité unique de vente', 'La compétition Labo est parfaite pour les films expérimentaux', 'Plus de 9000 films soumis chaque année'],
+    proTips: ['Le marché du film est une opportunité unique de vente', 'La compétition Labo est parfaite pour les films expérimentaux', 'Plus de 9 000 films soumis chaque année — soyez patient'],
     lienOfficiel: 'https://clermont-filmfest.org/',
+    oscarQualifying: true,
+    qualifyingCategories: ['Best Live Action Short', 'Best Animated Short'],
   },
   {
     id: 'berlin-shorts',
@@ -41,16 +52,21 @@ export const festivals: Festival[] = [
     ville: 'Berlin',
     pays: 'Allemagne',
     categorie: 'A',
-    description: 'Section courts métrages de la Berlinale. Ours d\'Or du court métrage. Sélection artistique audacieuse.',
+    description: 'Section courts métrages de la Berlinale. Ours d\'Or du court métrage. Sélection artistique audacieuse et engagée.',
     genres: ['fiction', 'documentaire', 'animation', 'experimental', 'hybride'],
     dureeMax: 30,
-    premiereRequise: true,
+    premiereType: 'mondiale',
     fraisInscription: false,
     deadline: '2026-09-01',
+    deadlineOuverture: '2026-04-15',
     dateEvent: '2027-02-11',
+    nbFilmsSoumis: 4500,
+    nbFilmsSelectionnes: 25,
     documents: ['Lien de visionnage', 'Fiche technique', 'Synopsis DE/EN', 'Photos HD'],
     proTips: ['Première mondiale ou internationale requise', 'Le festival valorise les formes audacieuses', 'Les films hybrides et expérimentaux ont leur chance'],
     lienOfficiel: 'https://www.berlinale.de/',
+    oscarQualifying: true,
+    qualifyingCategories: ['Best Live Action Short', 'Best Animated Short', 'Best Documentary Short'],
   },
   {
     id: 'venise-horizons',
@@ -61,13 +77,18 @@ export const festivals: Festival[] = [
     description: 'Section courts métrages de la Mostra de Venise dans le cadre Orizzonti. Lion d\'Or du court métrage.',
     genres: ['fiction', 'documentaire', 'animation'],
     dureeMax: 20,
-    premiereRequise: true,
+    premiereType: 'mondiale',
     fraisInscription: false,
     deadline: '2026-04-30',
+    deadlineOuverture: '2025-12-01',
     dateEvent: '2026-08-27',
+    nbFilmsSoumis: 3200,
+    nbFilmsSelectionnes: 12,
     documents: ['Lien de visionnage sécurisé', 'Fiche technique', 'Synopsis EN/IT', 'Photos'],
     proTips: ['Première mondiale obligatoire', 'Festival en août — planifiez vos disponibilités', 'L\'accréditation presse facilite la visibilité'],
     lienOfficiel: 'https://www.labiennale.org/en/cinema/',
+    oscarQualifying: true,
+    qualifyingCategories: ['Best Live Action Short'],
   },
   {
     id: 'locarno',
@@ -78,13 +99,18 @@ export const festivals: Festival[] = [
     description: 'Compétition internationale de courts métrages "Pardi di domani" (Léopards de demain). Tremplin majeur pour les cinéastes émergents.',
     genres: ['fiction', 'documentaire', 'experimental', 'hybride'],
     dureeMax: 20,
-    premiereRequise: true,
+    premiereType: 'internationale',
     fraisInscription: false,
     deadline: '2026-04-15',
+    deadlineOuverture: '2025-11-15',
     dateEvent: '2026-08-05',
+    nbFilmsSoumis: 3500,
+    nbFilmsSelectionnes: 30,
     documents: ['Lien de visionnage', 'Fiche technique', 'Synopsis EN', 'Bio réalisateur'],
     proTips: ['Très bon tremplin vers le long métrage', 'Ambiance festivalière unique au bord du lac', 'Les films d\'auteur et les premières œuvres sont privilégiés'],
     lienOfficiel: 'https://www.locarnofestival.ch/',
+    oscarQualifying: true,
+    qualifyingCategories: ['Best Live Action Short'],
   },
   {
     id: 'annecy',
@@ -92,16 +118,21 @@ export const festivals: Festival[] = [
     ville: 'Annecy',
     pays: 'France',
     categorie: 'A',
-    description: 'Le plus grand festival mondial dédié à l\'animation. Compétition courts métrages avec Cristal du court.',
+    description: 'Le plus grand festival mondial dédié à l\'animation. Compétition courts métrages avec Cristal du court. MIFA (marché international).',
     genres: ['animation'],
     dureeMax: 40,
-    premiereRequise: false,
+    premiereType: 'aucune',
     fraisInscription: false,
     deadline: '2026-02-01',
+    deadlineOuverture: '2025-09-01',
     dateEvent: '2026-06-15',
+    nbFilmsSoumis: 3100,
+    nbFilmsSelectionnes: 60,
     documents: ['Lien de visionnage HD', 'Fiche technique', 'Synopsis', 'Images du film', 'Dossier de presse'],
     proTips: ['Incontournable pour l\'animation', 'Le MIFA (marché) est essentiel pour les ventes', 'Catégories : films de fin d\'études, films commissionnés, etc.'],
     lienOfficiel: 'https://www.annecy.org/',
+    oscarQualifying: true,
+    qualifyingCategories: ['Best Animated Short'],
   },
   {
     id: 'sundance-shorts',
@@ -109,16 +140,22 @@ export const festivals: Festival[] = [
     ville: 'Park City',
     pays: 'États-Unis',
     categorie: 'A',
-    description: 'Programme courts métrages de Sundance. Cinq catégories : fiction, documentaire, animation, midnight et international.',
+    description: 'Programme courts métrages de Sundance. Cinq catégories : fiction, documentaire, animation, midnight et international. Qualifiant Oscars.',
     genres: ['fiction', 'documentaire', 'animation'],
     dureeMax: 50,
-    premiereRequise: false,
+    premiereType: 'aucune',
     fraisInscription: true,
+    fraisMontant: 50,
     deadline: '2026-08-15',
+    deadlineOuverture: '2026-04-01',
     dateEvent: '2027-01-22',
+    nbFilmsSoumis: 12500,
+    nbFilmsSelectionnes: 70,
     documents: ['Lien de visionnage', 'Formulaire en ligne', 'Synopsis EN', 'Bio réalisateur'],
-    proTips: ['Frais d\'inscription de 50$', 'Sélection très compétitive (plus de 12 000 soumissions)', 'Les programmes courts qualifient pour les Oscars'],
+    proTips: ['Frais d\'inscription de 50 $', 'Sélection très compétitive — 0.6% de taux d\'acceptation', 'Les programmes courts qualifient pour les Oscars'],
     lienOfficiel: 'https://www.sundance.org/',
+    oscarQualifying: true,
+    qualifyingCategories: ['Best Live Action Short', 'Best Animated Short', 'Best Documentary Short'],
   },
   {
     id: 'oberhausen',
@@ -126,16 +163,21 @@ export const festivals: Festival[] = [
     ville: 'Oberhausen',
     pays: 'Allemagne',
     categorie: 'A',
-    description: 'Le plus ancien festival de courts métrages au monde (depuis 1954). Compétition internationale, allemande et NRW.',
+    description: 'Le plus ancien festival de courts métrages au monde (depuis 1954). Compétition internationale, allemande et NRW. Référence pour le cinéma expérimental.',
     genres: ['fiction', 'documentaire', 'experimental', 'animation', 'hybride'],
     dureeMax: 35,
-    premiereRequise: false,
+    premiereType: 'aucune',
     fraisInscription: false,
     deadline: '2026-01-15',
+    deadlineOuverture: '2025-09-01',
     dateEvent: '2026-04-29',
+    nbFilmsSoumis: 5800,
+    nbFilmsSelectionnes: 120,
     documents: ['Lien de visionnage', 'Fiche technique', 'Synopsis EN/DE'],
     proTips: ['Festival très ouvert aux formes expérimentales', 'Section MuVi pour les clips musicaux', 'Programme pour enfants et jeune public'],
     lienOfficiel: 'https://www.kurzfilmtage.de/',
+    oscarQualifying: true,
+    qualifyingCategories: ['Best Live Action Short', 'Best Animated Short'],
   },
   {
     id: 'tampere',
@@ -143,16 +185,21 @@ export const festivals: Festival[] = [
     ville: 'Tampere',
     pays: 'Finlande',
     categorie: 'A',
-    description: 'L\'un des plus importants festivals de courts métrages en Europe du Nord. Compétition internationale et nationale finlandaise.',
+    description: 'L\'un des plus importants festivals de courts métrages en Europe du Nord. Compétition internationale et nationale finlandaise. Qualifiant Oscars.',
     genres: ['fiction', 'documentaire', 'animation', 'experimental'],
     dureeMax: 30,
-    premiereRequise: false,
+    premiereType: 'aucune',
     fraisInscription: false,
     deadline: '2026-10-01',
+    deadlineOuverture: '2026-06-01',
     dateEvent: '2027-03-04',
+    nbFilmsSoumis: 5200,
+    nbFilmsSelectionnes: 100,
     documents: ['Lien de visionnage', 'Fiche technique', 'Synopsis EN'],
-    proTips: ['Excellent réseau nordique', 'Ambiance chaleureuse et professionnelle', 'Bon marché pour les premières œuvres'],
+    proTips: ['Excellent réseau nordique', 'Ambiance chaleureuse et professionnelle', 'Bon marché pour les premières œuvres', 'Qualifiant pour les Oscars'],
     lienOfficiel: 'https://tamperefilmfestival.fi/',
+    oscarQualifying: true,
+    qualifyingCategories: ['Best Live Action Short', 'Best Animated Short', 'Best Documentary Short'],
   },
   {
     id: 'vila-do-conde',
@@ -160,16 +207,21 @@ export const festivals: Festival[] = [
     ville: 'Vila do Conde',
     pays: 'Portugal',
     categorie: 'A',
-    description: 'Festival portugais de courts métrages avec compétition internationale et nationale. Agência – Portuguese Short Film Agency.',
+    description: 'Festival portugais de courts métrages avec compétition internationale et nationale. Agência — Portuguese Short Film Agency pour la diffusion.',
     genres: ['fiction', 'documentaire', 'animation', 'experimental'],
     dureeMax: 30,
-    premiereRequise: false,
+    premiereType: 'aucune',
     fraisInscription: false,
     deadline: '2026-03-31',
+    deadlineOuverture: '2025-11-01',
     dateEvent: '2026-07-11',
+    nbFilmsSoumis: 3800,
+    nbFilmsSelectionnes: 80,
     documents: ['Lien de visionnage', 'Fiche technique', 'Synopsis EN/PT'],
     proTips: ['L\'Agência est un outil de diffusion unique', 'Festival au bord de l\'Atlantique', 'Sélection pointue et cinéphile'],
     lienOfficiel: 'https://www.curtasviladoconde.pt/',
+    oscarQualifying: true,
+    qualifyingCategories: ['Best Live Action Short', 'Best Animated Short'],
   },
   {
     id: 'brest',
@@ -177,15 +229,18 @@ export const festivals: Festival[] = [
     ville: 'Brest',
     pays: 'France',
     categorie: 'B',
-    description: 'Le plus grand festival de courts métrages de l\'ouest de la France. Compétitions européenne et française.',
+    description: 'Le plus grand festival de courts métrages de l\'ouest de la France. Compétitions européenne et française. Plus de 50 000 spectateurs.',
     genres: ['fiction', 'documentaire', 'animation'],
     dureeMax: 40,
-    premiereRequise: false,
+    premiereType: 'aucune',
     fraisInscription: false,
     deadline: '2026-07-31',
+    deadlineOuverture: '2026-03-01',
     dateEvent: '2026-11-10',
+    nbFilmsSoumis: 4000,
+    nbFilmsSelectionnes: 200,
     documents: ['Lien de visionnage', 'Fiche technique', 'Synopsis FR', 'Affiche'],
-    proTips: ['Excellent pour la diffusion en France', 'Public nombreux et cinéphile', 'Prix de la critique particulièrement reconnu'],
+    proTips: ['Excellent pour la diffusion en France', 'Public nombreux et cinéphile — 50 000 spectateurs', 'Prix de la critique particulièrement reconnu'],
     lienOfficiel: 'https://www.filmcourt.fr/',
   },
   {
@@ -194,15 +249,75 @@ export const festivals: Festival[] = [
     ville: 'Uppsala',
     pays: 'Suède',
     categorie: 'A',
-    description: 'Festival suédois de référence pour le court métrage. Compétition internationale et programmes thématiques.',
+    description: 'Festival suédois de référence pour le court métrage. Compétition internationale et programmes thématiques. Qualifiant Oscars et BAFTA.',
     genres: ['fiction', 'documentaire', 'animation', 'experimental'],
     dureeMax: 30,
-    premiereRequise: false,
+    premiereType: 'aucune',
     fraisInscription: false,
     deadline: '2026-06-15',
+    deadlineOuverture: '2026-02-01',
     dateEvent: '2026-10-19',
+    nbFilmsSoumis: 4200,
+    nbFilmsSelectionnes: 140,
     documents: ['Lien de visionnage', 'Fiche technique', 'Synopsis EN'],
-    proTips: ['Bon tremplin scandinave', 'Distribution de films courts via le festival', 'Workshops et masterclasses inclus'],
+    proTips: ['Bon tremplin scandinave', 'Distribution de films courts via le festival', 'Workshops et masterclasses inclus', 'Qualifiant Oscars et BAFTA'],
     lienOfficiel: 'https://www.shortfilmfestival.com/',
+    oscarQualifying: true,
+    qualifyingCategories: ['Best Live Action Short', 'Best Animated Short'],
   },
 ];
+
+// --- Merge Oscar-qualifying festivals from JSON reference ---
+
+interface OscarEntry {
+  name: string;
+  city: string;
+  country: string;
+  website: string;
+  qualifying_categories: string[];
+  existing_id?: string;
+}
+
+function slugify(name: string): string {
+  return name
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
+function categoriesToGenres(categories: string[]): Genre[] {
+  const genres = new Set<Genre>();
+  for (const cat of categories) {
+    if (cat === 'Best Live Action Short') genres.add('fiction');
+    if (cat === 'Best Animated Short') genres.add('animation');
+    if (cat === 'Best Documentary Short') genres.add('documentaire');
+  }
+  return [...genres];
+}
+
+const existingIds = new Set(curatedFestivals.map((f) => f.id));
+
+const oscarOnlyFestivals: Festival[] = (oscarData as OscarEntry[])
+  .filter((entry) => !entry.existing_id && !existingIds.has(slugify(entry.name)))
+  .map((entry): Festival => ({
+    id: slugify(entry.name),
+    nom: entry.name,
+    ville: entry.city,
+    pays: entry.country,
+    categorie: 'B' as const,
+    description: `Festival qualifiant pour les Oscars (${entry.qualifying_categories.join(', ')}).`,
+    genres: categoriesToGenres(entry.qualifying_categories),
+    premiereType: 'aucune' as const,
+    fraisInscription: false,
+    deadline: '2026-12-31',
+    dateEvent: '2027-06-01',
+    documents: [],
+    proTips: [],
+    lienOfficiel: entry.website || '',
+    oscarQualifying: true,
+    qualifyingCategories: entry.qualifying_categories,
+  }));
+
+export const festivals: Festival[] = [...curatedFestivals, ...oscarOnlyFestivals];

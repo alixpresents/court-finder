@@ -2,18 +2,25 @@
 
 import { useState, useMemo } from 'react';
 import { useProject } from '@/context/ProjectContext';
+import { useSubmissions } from '@/context/SubmissionsContext';
 import { festivals } from '@/data/festivals';
 import { GENRES } from '@/data/genres';
 import { matchFestival } from '@/lib/matching';
+import { getAllPremiereConflicts } from '@/lib/premieres';
 import { filterFestivals, type FestivalFilters } from '@/lib/filters';
 import FilterBar from '@/components/forms/FilterBar';
 import FestivalCard from '@/components/cards/FestivalCard';
+import PremiereTimeline from '@/components/festivals/PremiereTimeline';
 
 const PAYS_OPTIONS = [...new Set(festivals.map((f) => f.pays))].sort().map((p) => ({ value: p, label: p }));
 
 export default function FestivalsPage() {
   const { activeProject } = useProject();
-  const [filters, setFilters] = useState<FestivalFilters>({ search: '', genre: '', pays: '' });
+  const { submissions } = useSubmissions();
+  const [filters, setFilters] = useState<FestivalFilters>({ search: '', genre: '', pays: '', oscarOnly: false });
+
+  const conflictMap = useMemo(() => getAllPremiereConflicts(submissions), [submissions]);
+  const hasTrackedFestivals = submissions.some((s) => s.targetType === 'festival');
 
   const filtered = useMemo(() => {
     let list = filterFestivals(festivals, filters);
@@ -46,12 +53,28 @@ export default function FestivalsPage() {
         onFilterChange={(id, v) => setFilters((f) => ({ ...f, [id]: v }))}
       />
 
+      <div className="flex items-center gap-3">
+        <button
+          onClick={() => setFilters((f) => ({ ...f, oscarOnly: !f.oscarOnly }))}
+          className={`inline-flex items-center gap-1.5 rounded-lg border px-3 py-1.5 text-sm font-medium transition-colors ${
+            filters.oscarOnly
+              ? 'border-amber-500/40 bg-amber-500/10 text-amber-300'
+              : 'border-border bg-surface-hover text-text-secondary hover:text-text-primary'
+          }`}
+        >
+          🏆 Oscar Qualifying{filters.oscarOnly ? ' uniquement' : ''}
+        </button>
+      </div>
+
+      {hasTrackedFestivals && <PremiereTimeline submissions={submissions} />}
+
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {filtered.map((festival) => (
           <FestivalCard
             key={festival.id}
             festival={festival}
             match={activeProject ? matchFestival(activeProject, festival) : undefined}
+            hasConflict={conflictMap.has(festival.id)}
           />
         ))}
       </div>

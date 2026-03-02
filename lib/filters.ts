@@ -10,6 +10,7 @@ export interface FestivalFilters {
   search: string;
   genre: Genre | '';
   pays: string;
+  oscarOnly: boolean;
 }
 
 export function filterAides(list: Aide[], filters: AideFilters): Aide[] {
@@ -30,6 +31,7 @@ export function filterFestivals(list: Festival[], filters: FestivalFilters): Fes
     }
     if (filters.genre && !f.genres.includes(filters.genre)) return false;
     if (filters.pays && f.pays !== filters.pays) return false;
+    if (filters.oscarOnly && !f.oscarQualifying) return false;
     return true;
   });
 }

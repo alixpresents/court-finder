@@ -2,7 +2,9 @@ import type { Metadata } from 'next';
 import { DM_Sans, Inter } from 'next/font/google';
 import './globals.css';
 import AppShell from '@/components/layout/AppShell';
+import { AuthProvider } from '@/context/AuthContext';
 import { ProjectProvider } from '@/context/ProjectContext';
+import { PlanProvider } from '@/context/PlanContext';
 import { SubmissionsProvider } from '@/context/SubmissionsContext';
 
 const dmSans = DM_Sans({
@@ -30,11 +32,15 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <body className={`${dmSans.variable} ${inter.variable} antialiased`}>
-        <ProjectProvider>
-          <SubmissionsProvider>
-            <AppShell>{children}</AppShell>
-          </SubmissionsProvider>
-        </ProjectProvider>
+        <AuthProvider>
+          <ProjectProvider>
+            <PlanProvider>
+              <SubmissionsProvider>
+                <AppShell>{children}</AppShell>
+              </SubmissionsProvider>
+            </PlanProvider>
+          </ProjectProvider>
+        </AuthProvider>
       </body>
     </html>
   );

@@ -1,4 +1,4 @@
-import type { Genre, Etape, ProfilRealisateur, AideType, FestivalCategorie, SubmissionStatus } from './types';
+import type { Genre, Etape, ProfilRealisateur, AideType, FestivalCategorie, SubmissionStatus, FinancementCategory, PremiereType } from './types';
 
 export const GENRE_LABELS: Record<Genre, string> = {
   fiction: 'Fiction',
@@ -79,3 +79,46 @@ export const SUBMISSION_PIPELINE: SubmissionStatus[] = [
   'acceptee',
   'refusee',
 ];
+
+export const PREMIERE_TYPE_LABELS: Record<PremiereType, string> = {
+  mondiale: 'Première mondiale',
+  internationale: 'Première internationale',
+  europeenne: 'Première européenne',
+  nationale: 'Première nationale',
+  aucune: 'Aucune',
+};
+
+export const PREMIERE_TYPE_COLORS: Record<PremiereType, string> = {
+  mondiale: 'bg-purple-500/15 text-purple-400',
+  internationale: 'bg-indigo-500/15 text-indigo-400',
+  europeenne: 'bg-blue-500/15 text-blue-400',
+  nationale: 'bg-sky-500/15 text-sky-400',
+  aucune: '',
+};
+
+/** Higher index = stricter premiere. mondiale > internationale > européenne > nationale */
+export const PREMIERE_HIERARCHY: PremiereType[] = [
+  'aucune',
+  'nationale',
+  'europeenne',
+  'internationale',
+  'mondiale',
+];
+
+export const FINANCEMENT_CATEGORY_LABELS: Record<FinancementCategory, string> = {
+  aide_publique: 'Aide publique',
+  apport_producteur: 'Apport producteur',
+  crowdfunding: 'Crowdfunding',
+  pre_achats: 'Pré-achats',
+  industrie_technique: 'Industrie technique',
+  apport_personnel: 'Apport personnel',
+};
+
+export const FINANCEMENT_CATEGORY_COLORS: Record<FinancementCategory, string> = {
+  aide_publique: '#3ECF8E',
+  apport_producteur: '#60A5FA',
+  crowdfunding: '#A78BFA',
+  pre_achats: '#E8C547',
+  industrie_technique: '#F472B6',
+  apport_personnel: '#94A3B8',
+};
