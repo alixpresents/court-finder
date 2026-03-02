@@ -1,0 +1,15 @@
+export const REGIONS: { value: string; label: string }[] = [
+  { value: 'ile-de-france', label: 'Île-de-France' },
+  { value: 'auvergne-rhone-alpes', label: 'Auvergne-Rhône-Alpes' },
+  { value: 'nouvelle-aquitaine', label: 'Nouvelle-Aquitaine' },
+  { value: 'occitanie', label: 'Occitanie' },
+  { value: 'bretagne', label: 'Bretagne' },
+  { value: 'provence-alpes-cote-dazur', label: "Provence-Alpes-Côte d'Azur" },
+  { value: 'grand-est', label: 'Grand Est' },
+  { value: 'hauts-de-france', label: 'Hauts-de-France' },
+  { value: 'normandie', label: 'Normandie' },
+  { value: 'pays-de-la-loire', label: 'Pays de la Loire' },
+  { value: 'bourgogne-franche-comte', label: 'Bourgogne-Franche-Comté' },
+  { value: 'centre-val-de-loire', label: 'Centre-Val de Loire' },
+  { value: 'corse', label: 'Corse' },
+];
