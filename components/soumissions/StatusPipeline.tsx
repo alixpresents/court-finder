@@ -19,10 +19,10 @@ export default function StatusPipeline({ submissions }: StatusPipelineProps) {
   });
 
   return (
-    <div className="flex items-center gap-1">
+    <div className="flex items-center gap-1 overflow-x-auto pb-1">
       {SUBMISSION_PIPELINE.map((status, i) => (
         <div key={status} className="flex items-center flex-1">
-          <div className="flex-1 rounded-lg border border-border bg-surface p-3 text-center">
+          <div className="flex-1 min-w-[80px] rounded-lg border border-border bg-surface p-3 text-center">
             <p className="text-lg font-bold font-sans text-text-primary">{counts[status]}</p>
             <p className="text-[11px] text-text-muted mt-0.5">{SUBMISSION_STATUS_LABELS[status]}</p>
           </div>

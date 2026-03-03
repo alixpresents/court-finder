@@ -12,7 +12,7 @@ export default function Select({ label, options, placeholder, id, className = ''
       </label>
       <select
         id={id}
-        className={`rounded-lg border border-border bg-surface-hover px-3 py-2 text-sm text-text-primary outline-none transition-colors focus:border-accent/50 focus:ring-1 focus:ring-accent/25 ${className}`}
+        className={`rounded-lg border border-border bg-surface-hover px-3 py-2 text-sm text-text-primary outline-none transition-colors focus:border-border-focus focus:ring-1 focus:ring-accent/25 ${className}`}
         {...props}
       >
         {placeholder && (

@@ -50,7 +50,7 @@ export default function DonutChart({ slices, budget }: DonutChartProps) {
             cy={size / 2}
             r={radius}
             fill="none"
-            stroke="var(--surface-hover)"
+            stroke="var(--bg-surface-hover)"
             strokeWidth={stroke}
           />
           {/* Data segments */}

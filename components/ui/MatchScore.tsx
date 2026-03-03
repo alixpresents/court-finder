@@ -4,45 +4,28 @@ interface MatchScoreProps {
 }
 
 function getScoreColor(score: number): string {
-  if (score >= 70) return '#3ECF8E';
-  if (score >= 40) return '#E8C547';
-  return '#EF4444';
+  if (score >= 70) return 'bg-emerald-500';
+  if (score >= 40) return 'bg-amber-400';
+  return 'bg-red-500';
 }
 
-export default function MatchScore({ score, size = 48 }: MatchScoreProps) {
-  const radius = (size - 6) / 2;
-  const circumference = 2 * Math.PI * radius;
-  const progress = (score / 100) * circumference;
-  const color = getScoreColor(score);
+function getTextColor(score: number): string {
+  if (score >= 70) return 'text-emerald-400';
+  if (score >= 40) return 'text-amber-400';
+  return 'text-red-400';
+}
 
+export default function MatchScore({ score }: MatchScoreProps) {
   return (
-    <div className="relative inline-flex items-center justify-center" style={{ width: size, height: size }}>
-      <svg width={size} height={size} className="-rotate-90">
-        <circle
-          cx={size / 2}
-          cy={size / 2}
-          r={radius}
-          fill="none"
-          stroke="rgba(255,255,255,0.08)"
-          strokeWidth={3}
+    <div className="flex items-center gap-2">
+      <div className="relative h-1.5 w-16 rounded-full bg-white/8 overflow-hidden">
+        <div
+          className={`absolute inset-y-0 left-0 rounded-full ${getScoreColor(score)} transition-all duration-500`}
+          style={{ width: `${score}%` }}
         />
-        <circle
-          cx={size / 2}
-          cy={size / 2}
-          r={radius}
-          fill="none"
-          stroke={color}
-          strokeWidth={3}
-          strokeDasharray={circumference}
-          strokeDashoffset={circumference - progress}
-          strokeLinecap="round"
-        />
-      </svg>
-      <span
-        className="absolute text-xs font-semibold"
-        style={{ color }}
-      >
-        {score}
+      </div>
+      <span className={`font-mono text-xs font-medium tabular-nums ${getTextColor(score)}`}>
+        {score}%
       </span>
     </div>
   );

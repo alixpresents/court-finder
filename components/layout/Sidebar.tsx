@@ -1,72 +1,140 @@
 'use client';
 
-import { LayoutDashboard, FolderOpen, Award, Trophy, Calendar, ClipboardList, LogOut } from 'lucide-react';
+import { useMemo } from 'react';
+import { LayoutDashboard, Film, FolderOpen, Award, Trophy, Calendar, ClipboardList, DollarSign, Settings, Bell, LogOut, ArrowRight } from 'lucide-react';
 import SidebarLink from './SidebarLink';
 import ProjectSwitcher from './ProjectSwitcher';
-import NotificationBell from './NotificationBell';
 import Badge from '@/components/ui/Badge';
 import { useAuth } from '@/context/AuthContext';
 import { usePlan } from '@/context/PlanContext';
+import { useProject } from '@/context/ProjectContext';
+import { aides } from '@/data/aides';
+import { festivals } from '@/data/festivals';
+import { daysUntil } from '@/lib/dates';
+import { matchAide } from '@/lib/matching';
 
-const NAV_ITEMS = [
-  { href: '/', icon: LayoutDashboard, label: 'Dashboard' },
-  { href: '/projets', icon: FolderOpen, label: 'Mes projets' },
-  { href: '/aides', icon: Award, label: 'Aides' },
-  { href: '/festivals', icon: Trophy, label: 'Festivals' },
-  { href: '/calendrier', icon: Calendar, label: 'Calendrier' },
-  { href: '/soumissions', icon: ClipboardList, label: 'Soumissions' },
-];
+interface SidebarProps {
+  open: boolean;
+  onClose: () => void;
+}
 
-export default function Sidebar() {
+export default function Sidebar({ open, onClose }: SidebarProps) {
   const { signOut } = useAuth();
-  const { isPro, downgrade } = usePlan();
+  const { isPro, upgrade, downgrade } = usePlan();
+  const { activeProject, projects } = useProject();
+
+  const counts = useMemo(() => {
+    const eligibleAides = activeProject ? aides.filter((a) => matchAide(activeProject, a).score >= 50).length : 0;
+    const eligibleFestivals = activeProject ? festivals.filter((f) => daysUntil(f.deadline) >= 0).length : 0;
+    const urgentDeadlines = [...aides, ...festivals].filter((item) => {
+      const d = daysUntil(item.deadline);
+      return d >= 0 && d < 7;
+    }).length;
+    return { eligibleAides, eligibleFestivals, urgentDeadlines };
+  }, [activeProject]);
 
   return (
-    <aside className="fixed left-0 top-0 z-30 flex h-screen w-[260px] flex-col border-r border-border bg-surface">
-      <div className="flex h-16 items-center gap-2.5 px-6">
-        <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-accent text-background font-bold text-sm">
-          CF
-        </div>
-        <span className="font-sans text-lg font-semibold text-text-primary tracking-tight">
-          Court·Finder
+    <aside
+      className={`fixed left-0 top-0 z-50 flex h-screen w-[240px] flex-col border-r border-border bg-surface transition-transform duration-300 ease-out lg:translate-x-0 ${
+        open ? 'translate-x-0' : '-translate-x-full'
+      }`}
+    >
+      {/* Header: logo + plan badge */}
+      <div className="flex h-14 items-center gap-2 px-5">
+        <span className="font-serif text-xl text-accent-gold italic tracking-tight">
+          Court · Finder
         </span>
-        <Badge className={isPro ? 'bg-accent/10 text-accent' : 'bg-white/10 text-text-muted'}>
+        <Badge className={isPro ? 'bg-accent/10 text-accent' : 'bg-white/8 text-text-tertiary'}>
           {isPro ? 'Pro' : 'Free'}
         </Badge>
-        <div className="ml-auto">
-          <NotificationBell />
-        </div>
       </div>
 
-      <div className="mb-2">
-        <ProjectSwitcher />
+      {/* Project Switcher */}
+      <div className="mb-1">
+        <ProjectSwitcher onNavigate={onClose} />
       </div>
 
-      <nav className="flex flex-1 flex-col gap-1 px-3 py-4">
-        {NAV_ITEMS.map((item) => (
-          <SidebarLink key={item.href} {...item} />
-        ))}
+      {/* Navigation */}
+      <nav className="flex flex-1 flex-col gap-0.5 overflow-y-auto px-3 py-2">
+        {/* MON PROJET */}
+        <p className="px-2 pt-3 pb-1 text-[10px] font-semibold uppercase tracking-widest text-text-tertiary">
+          Mon projet
+        </p>
+        <SidebarLink href="/" icon={LayoutDashboard} label="Dashboard" onClick={onClose} />
+        <SidebarLink
+          href={projects.length > 1 ? '/projets' : activeProject ? `/projet/${activeProject.id}` : '/projets'}
+          icon={projects.length > 1 ? FolderOpen : Film}
+          label={projects.length > 1 ? 'Mes films' : 'Mon film'}
+          onClick={onClose}
+        />
+
+        {/* OPPORTUNITES */}
+        <p className="px-2 pt-4 pb-1 text-[10px] font-semibold uppercase tracking-widest text-text-tertiary">
+          Opportunités
+        </p>
+        <SidebarLink
+          href="/aides"
+          icon={Award}
+          label="Aides éligibles"
+          badge={counts.eligibleAides > 0 ? { count: counts.eligibleAides, color: 'bg-accent/15 text-accent' } : undefined}
+          onClick={onClose}
+        />
+        <SidebarLink
+          href="/festivals"
+          icon={Trophy}
+          label="Festivals"
+          badge={counts.eligibleFestivals > 0 ? { count: counts.eligibleFestivals, color: 'bg-festival/15 text-festival' } : undefined}
+          onClick={onClose}
+        />
+        <SidebarLink
+          href="/calendrier"
+          icon={Calendar}
+          label="Calendrier"
+          badge={counts.urgentDeadlines > 0 ? { count: counts.urgentDeadlines, color: 'bg-red-500/15 text-red-400' } : undefined}
+          onClick={onClose}
+        />
+
+        {/* SUIVI */}
+        <p className="px-2 pt-4 pb-1 text-[10px] font-semibold uppercase tracking-widest text-text-tertiary">
+          Suivi
+        </p>
+        <SidebarLink href="/soumissions" icon={ClipboardList} label="Soumissions" onClick={onClose} />
+        {activeProject && (
+          <SidebarLink href={`/projet/${activeProject.id}/financement`} icon={DollarSign} label="Plan de financement" onClick={onClose} />
+        )}
       </nav>
 
-      <div className="border-t border-border px-4 py-3 flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <p className="text-xs text-text-muted">v0.1</p>
-          {isPro && (
-            <button
-              onClick={downgrade}
-              className="text-xs text-text-muted hover:text-text-secondary transition-colors"
-            >
-              Revenir en Free
-            </button>
-          )}
+      {/* Bottom section */}
+      <div className="border-t border-border px-3 py-2 space-y-1">
+        {!isPro && (
+          <button
+            onClick={upgrade}
+            className="flex w-full items-center justify-between rounded-md px-3 py-2 text-sm font-medium text-accent-gold bg-accent-gold/8 hover:bg-accent-gold/15 transition-colors"
+          >
+            <span>Passer à Pro</span>
+            <ArrowRight size={14} />
+          </button>
+        )}
+
+        <div className="flex items-center justify-between px-1 py-1">
+          <div className="flex items-center gap-2">
+            {isPro && (
+              <button
+                onClick={downgrade}
+                className="text-[11px] text-text-tertiary hover:text-text-secondary transition-colors"
+              >
+                Revenir en Free
+              </button>
+            )}
+          </div>
+          <button
+            onClick={signOut}
+            className="flex items-center gap-1.5 rounded-md px-2 py-1.5 text-xs text-text-tertiary hover:text-text-primary hover:bg-surface-hover transition-colors"
+          >
+            <LogOut size={13} />
+            <span className="hidden sm:inline">Déconnexion</span>
+          </button>
         </div>
-        <button
-          onClick={signOut}
-          className="flex items-center gap-1.5 rounded-md px-2 py-1 text-xs text-text-muted hover:text-text-primary hover:bg-surface-hover transition-colors"
-        >
-          <LogOut size={14} />
-          Déconnexion
-        </button>
       </div>
     </aside>
   );

@@ -27,14 +27,14 @@ export default function DetailHeader({
     <div className="mb-8">
       <Link
         href={backHref}
-        className="inline-flex items-center gap-1.5 text-sm text-text-secondary hover:text-text-primary transition-colors mb-4"
+        className="inline-flex items-center gap-1.5 text-sm text-text-secondary hover:text-text-primary transition-colors mb-4 min-h-[44px]"
       >
         <ArrowLeft size={16} />
         {backLabel}
       </Link>
 
-      <div className="flex items-start justify-between">
-        <div className="flex-1">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+        <div className="flex-1 min-w-0">
           <h1 className="font-sans text-2xl font-bold text-text-primary mb-1">{title}</h1>
           <p className="text-sm text-text-secondary mb-3">{subtitle}</p>
           <div className="flex flex-wrap gap-2">
@@ -43,13 +43,13 @@ export default function DetailHeader({
             ))}
           </div>
         </div>
-        <div className="flex items-center gap-4 ml-6">
-          {match && <MatchScore score={match.score} size={56} />}
+        <div className="flex items-center gap-4 shrink-0">
+          {match && <MatchScore score={match.score} />}
           <a
             href={lienOfficiel}
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-lg bg-accent px-4 py-2 text-sm font-medium text-background hover:bg-accent-hover transition-colors"
+            className="rounded-md bg-accent px-4 py-2 text-sm font-medium text-text-on-accent hover:brightness-110 transition-all min-h-[44px] inline-flex items-center"
           >
             Site officiel
           </a>

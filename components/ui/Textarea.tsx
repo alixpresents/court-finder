@@ -10,7 +10,7 @@ export default function Textarea({ label, id, className = '', ...props }: Textar
       </label>
       <textarea
         id={id}
-        className={`rounded-lg border border-border bg-surface-hover px-3 py-2 text-sm text-text-primary placeholder:text-text-muted outline-none transition-colors focus:border-accent/50 focus:ring-1 focus:ring-accent/25 resize-none ${className}`}
+        className={`rounded-lg border border-border bg-surface-hover px-3 py-2 text-sm text-text-primary placeholder:text-text-muted outline-none transition-colors focus:border-border-focus focus:ring-1 focus:ring-accent/25 resize-none ${className}`}
         rows={3}
         {...props}
       />

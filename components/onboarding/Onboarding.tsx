@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
-import { ArrowRight, Sparkles, Film, User, BarChart3 } from 'lucide-react';
+import { ArrowRight, Sparkles, Film, User, BarChart3, Check } from 'lucide-react';
 import { useProject } from '@/context/ProjectContext';
 import Select from '@/components/ui/Select';
 import Input from '@/components/ui/Input';
@@ -157,39 +157,36 @@ export default function Onboarding() {
     setForm((f) => ({ ...f, productionVille: '', regionProduction: '', regionProductionLabel: '' }));
   }
 
-  // Can advance from step 1?
   const step1Valid = form.titre.trim().length > 0 && form.genre && form.etape;
-  // Can advance from step 2?
   const step2Valid = form.profilRealisateur.length > 0;
 
   return (
     <div className="fixed inset-0 z-50 flex flex-col bg-background">
-      {/* Stepper */}
-      <div className="flex items-center justify-center gap-2 px-4 pt-8 pb-4">
+      {/* Circle stepper */}
+      <div className="flex items-center justify-center gap-0 px-4 pt-8 pb-4">
         {STEPS.map((s, i) => {
-          const Icon = s.icon;
           const active = i === step;
           const done = i < step;
           return (
-            <div key={s.label} className="flex items-center gap-2">
+            <div key={s.label} className="flex items-center">
               {i > 0 && (
-                <div
-                  className={`h-px w-8 transition-colors duration-300 ${
-                    done ? 'bg-accent' : 'bg-border'
-                  }`}
-                />
+                <div className={`h-[2px] w-8 sm:w-12 transition-colors duration-300 ${done ? 'bg-accent-purple' : 'bg-border'}`} />
               )}
-              <div
-                className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium transition-all duration-300 ${
-                  active
-                    ? 'bg-accent/15 text-accent'
-                    : done
-                      ? 'bg-accent/10 text-accent/70'
-                      : 'bg-surface text-text-muted'
-                }`}
-              >
-                <Icon className="h-3.5 w-3.5" />
-                <span className="hidden sm:inline">{s.label}</span>
+              <div className="flex flex-col items-center gap-1.5">
+                <div
+                  className={`flex h-9 w-9 items-center justify-center rounded-full border-2 transition-all duration-300 ${
+                    done
+                      ? 'border-accent-purple bg-accent-purple text-white'
+                      : active
+                        ? 'border-accent-purple bg-accent-purple/15 text-accent-purple'
+                        : 'border-border bg-transparent text-text-tertiary'
+                  }`}
+                >
+                  {done ? <Check size={16} strokeWidth={3} /> : <s.icon size={16} />}
+                </div>
+                <span className={`text-[10px] font-medium ${active ? 'text-text-primary' : 'text-text-tertiary'}`}>
+                  {s.label}
+                </span>
               </div>
             </div>
           );
@@ -201,7 +198,7 @@ export default function Onboarding() {
         <div className="flex justify-center">
           <button
             onClick={handleSkip}
-            className="text-xs text-text-muted hover:text-text-secondary transition-colors"
+            className="text-xs text-text-tertiary hover:text-text-secondary transition-colors"
           >
             Je remplirai plus tard
           </button>
@@ -224,11 +221,11 @@ export default function Onboarding() {
           {/* Step 0 — Bienvenue */}
           {step === 0 && (
             <div className="flex flex-col items-center text-center space-y-6">
-              <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-accent/10">
-                <Sparkles className="h-8 w-8 text-accent" />
+              <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-accent-purple/10">
+                <Sparkles className="h-8 w-8 text-accent-purple" />
               </div>
               <div className="space-y-3">
-                <h1 className="text-3xl font-bold text-text-primary">
+                <h1 className="font-serif text-4xl italic text-accent-gold">
                   Court·Finder
                 </h1>
                 <p className="text-base text-text-secondary max-w-sm">
@@ -237,7 +234,7 @@ export default function Onboarding() {
               </div>
               <button
                 onClick={() => goTo(1)}
-                className="inline-flex items-center gap-2 rounded-lg bg-accent px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-accent/90"
+                className="inline-flex items-center gap-2 rounded-md bg-accent-purple px-6 py-3 text-sm font-semibold text-white transition-all hover:brightness-110 active:scale-[0.98] w-full max-w-xs justify-center min-h-[48px]"
               >
                 C&apos;est parti
                 <ArrowRight className="h-4 w-4" />
@@ -291,16 +288,14 @@ export default function Onboarding() {
                 />
               </div>
 
-              <div className="flex justify-end pt-2">
-                <button
-                  onClick={() => goTo(2)}
-                  disabled={!step1Valid}
-                  className="inline-flex items-center gap-2 rounded-lg bg-accent px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-accent/90 disabled:opacity-40 disabled:cursor-not-allowed"
-                >
-                  Continuer
-                  <ArrowRight className="h-4 w-4" />
-                </button>
-              </div>
+              <button
+                onClick={() => goTo(2)}
+                disabled={!step1Valid}
+                className="inline-flex items-center gap-2 rounded-md bg-accent-purple px-5 py-3 text-sm font-semibold text-white transition-all hover:brightness-110 disabled:opacity-40 disabled:cursor-not-allowed w-full justify-center min-h-[48px]"
+              >
+                Continuer
+                <ArrowRight className="h-4 w-4" />
+              </button>
             </div>
           )}
 
@@ -331,10 +326,10 @@ export default function Onboarding() {
                     value={form.lieuTournage}
                     onSelect={handleTournageSelect}
                     onClear={handleTournageClear}
-                    placeholder="Rechercher une commune…"
+                    placeholder="Rechercher une commune..."
                   />
                   {form.regionLabel && (
-                    <span className="mt-1.5 inline-block rounded-full bg-accent/10 px-2.5 py-0.5 text-xs font-medium text-accent">
+                    <span className="mt-1.5 inline-block rounded bg-accent-purple/10 px-2.5 py-0.5 text-xs font-medium text-accent-purple">
                       Région : {form.regionLabel}
                     </span>
                   )}
@@ -352,11 +347,11 @@ export default function Onboarding() {
                         ...(checked ? { productionNom: '', productionVille: '', regionProduction: '', regionProductionLabel: '' } : {}),
                       }));
                     }}
-                    className="mt-1 h-4 w-4 rounded border-border bg-surface accent-accent"
+                    className="mt-1 h-4 w-4 rounded border-border bg-surface accent-accent-purple"
                   />
                   <div>
                     <span className="text-sm font-medium text-text-primary">Auto-production</span>
-                    <p className="text-xs text-text-muted mt-0.5">Tu portes le projet seul, sans producteur délégué.</p>
+                    <p className="text-xs text-text-tertiary mt-0.5">Tu portes le projet seul, sans producteur délégué.</p>
                   </div>
                 </label>
 
@@ -379,10 +374,10 @@ export default function Onboarding() {
                         value={form.productionVille}
                         onSelect={handleProductionVilleSelect}
                         onClear={handleProductionVilleClear}
-                        placeholder="Rechercher une commune…"
+                        placeholder="Rechercher une commune..."
                       />
                       {form.regionProductionLabel && (
-                        <span className="mt-1.5 inline-block rounded-full bg-accent/10 px-2.5 py-0.5 text-xs font-medium text-accent">
+                        <span className="mt-1.5 inline-block rounded bg-accent-purple/10 px-2.5 py-0.5 text-xs font-medium text-accent-purple">
                           Région : {form.regionProductionLabel}
                         </span>
                       )}
@@ -391,17 +386,17 @@ export default function Onboarding() {
                 )}
               </div>
 
-              <div className="flex justify-between pt-2">
+              <div className="flex gap-3">
                 <button
                   onClick={() => goTo(1)}
-                  className="rounded-lg px-4 py-2.5 text-sm font-medium text-text-secondary hover:text-text-primary transition-colors"
+                  className="rounded-md px-4 py-3 text-sm font-medium text-text-secondary hover:text-text-primary transition-colors min-h-[48px]"
                 >
                   Retour
                 </button>
                 <button
                   onClick={handleGoToResults}
                   disabled={!step2Valid}
-                  className="inline-flex items-center gap-2 rounded-lg bg-accent px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-accent/90 disabled:opacity-40 disabled:cursor-not-allowed"
+                  className="flex-1 inline-flex items-center gap-2 justify-center rounded-md bg-accent-purple px-5 py-3 text-sm font-semibold text-white transition-all hover:brightness-110 disabled:opacity-40 disabled:cursor-not-allowed min-h-[48px]"
                 >
                   Voir mes résultats
                   <ArrowRight className="h-4 w-4" />
@@ -410,7 +405,7 @@ export default function Onboarding() {
             </div>
           )}
 
-          {/* Step 3 — Tes résultats */}
+          {/* Step 3 — Résultats */}
           {step === 3 && (
             <div className="flex flex-col items-center text-center space-y-8">
               <div className="space-y-2">
@@ -423,14 +418,14 @@ export default function Onboarding() {
               </div>
 
               <div className="grid grid-cols-2 gap-6 w-full max-w-sm">
-                <div className="rounded-xl border border-border bg-surface p-6 space-y-1">
-                  <div className="text-4xl font-bold text-accent tabular-nums">
+                <div className="rounded-lg border border-accent/20 bg-accent/5 p-6 space-y-1 animate-confetti" style={{ boxShadow: '0 0 40px rgba(62,207,142,0.08)' }}>
+                  <div className="text-5xl font-bold text-accent font-mono tabular-nums">
                     <AnimatedCount target={results.aideCount} />
                   </div>
                   <p className="text-sm text-text-secondary">aides trouvées</p>
                 </div>
-                <div className="rounded-xl border border-border bg-surface p-6 space-y-1">
-                  <div className="text-4xl font-bold text-festival tabular-nums">
+                <div className="rounded-lg border border-festival/20 bg-festival/5 p-6 space-y-1 animate-confetti" style={{ animationDelay: '150ms', boxShadow: '0 0 40px rgba(232,197,71,0.08)' }}>
+                  <div className="text-5xl font-bold text-festival font-mono tabular-nums">
                     <AnimatedCount target={results.festivalCount} />
                   </div>
                   <p className="text-sm text-text-secondary">festivals qui matchent</p>
@@ -439,7 +434,7 @@ export default function Onboarding() {
 
               <button
                 onClick={handleComplete}
-                className="inline-flex items-center gap-2 rounded-lg bg-accent px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-accent/90"
+                className="inline-flex items-center gap-2 rounded-md bg-accent px-6 py-3 text-sm font-semibold text-text-on-accent transition-all hover:brightness-110 active:scale-[0.98] w-full max-w-xs justify-center min-h-[48px]"
               >
                 Explorer mes opportunités
                 <ArrowRight className="h-4 w-4" />

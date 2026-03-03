@@ -11,12 +11,20 @@ interface UpgradeModalProps {
   onClose: () => void;
 }
 
-const ADVANTAGES = [
-  'Projets illimités',
-  'Matching intelligent',
-  'Alertes email',
-  'Export PDF',
-  'Conseils stratégiques',
+const FREE_FEATURES = [
+  { label: '1 projet', included: true },
+  { label: 'Matching de base', included: true },
+  { label: 'Alertes email', included: false },
+  { label: 'Export PDF', included: false },
+  { label: 'Conseils stratégiques', included: false },
+];
+
+const PRO_FEATURES = [
+  { label: 'Projets illimités', included: true },
+  { label: 'Matching intelligent', included: true },
+  { label: 'Alertes email', included: true },
+  { label: 'Export PDF', included: true },
+  { label: 'Conseils stratégiques', included: true },
 ];
 
 type ModalState = 'idle' | 'loading' | 'success';
@@ -56,20 +64,20 @@ export default function UpgradeModal({ open, onClose }: UpgradeModalProps) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center">
-      <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={state !== 'loading' ? onClose : undefined} />
+      <div className="absolute inset-0 bg-black/60 backdrop-blur-[12px]" onClick={state !== 'loading' ? onClose : undefined} />
 
-      <div className="relative w-full max-w-md mx-4 rounded-xl border border-border bg-surface p-6 shadow-2xl">
+      <div className="relative w-full max-w-[440px] mx-4 rounded-xl border border-border bg-elevated p-6 shadow-2xl animate-modal-scale-in">
         <button
           onClick={onClose}
           disabled={state === 'loading'}
-          className="absolute top-4 right-4 text-text-muted hover:text-text-primary transition-colors disabled:opacity-50"
+          className="absolute top-4 right-4 text-text-tertiary hover:text-text-primary transition-colors disabled:opacity-50"
         >
           <X size={18} />
         </button>
 
         {state === 'success' ? (
           <div className="flex flex-col items-center py-6 text-center">
-            <div className="flex h-14 w-14 items-center justify-center rounded-full bg-accent/10 mb-4 animate-[scale-in_0.3s_ease-out]">
+            <div className="flex h-14 w-14 items-center justify-center rounded-full bg-accent/10 mb-4 animate-confetti">
               <Check size={28} className="text-accent" />
             </div>
             <h2 className="font-sans text-xl font-bold text-text-primary">
@@ -81,49 +89,66 @@ export default function UpgradeModal({ open, onClose }: UpgradeModalProps) {
           </div>
         ) : (
           <>
-            <div className="flex items-center gap-3 mb-5">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent/10">
-                <Crown size={20} className="text-accent" />
+            <div className="flex items-center gap-3 mb-6">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-festival/10">
+                <Crown size={20} className="text-festival" />
               </div>
               <h2 className="font-sans text-lg font-semibold text-text-primary">
                 Passez à Court·Finder Pro
               </h2>
             </div>
 
-            <ul className="space-y-2 mb-5">
-              {ADVANTAGES.map((a) => (
-                <li key={a} className="flex items-center gap-2 text-sm text-text-secondary">
-                  <Check size={15} className="text-accent shrink-0" />
-                  {a}
-                </li>
-              ))}
-            </ul>
+            {/* Comparison */}
+            <div className="grid grid-cols-2 gap-3 mb-5">
+              <div className="rounded-lg border border-border bg-surface p-3">
+                <p className="text-xs font-semibold text-text-tertiary uppercase tracking-wider mb-2">Free</p>
+                {FREE_FEATURES.map((f) => (
+                  <div key={f.label} className="flex items-center gap-1.5 text-xs text-text-secondary py-0.5">
+                    {f.included ? (
+                      <Check size={12} className="text-accent shrink-0" />
+                    ) : (
+                      <X size={12} className="text-text-tertiary shrink-0" />
+                    )}
+                    <span className={!f.included ? 'text-text-tertiary' : ''}>{f.label}</span>
+                  </div>
+                ))}
+              </div>
+              <div className="rounded-lg border border-accent-purple/30 bg-accent-purple/5 p-3">
+                <p className="text-xs font-semibold text-accent-purple uppercase tracking-wider mb-2">Pro</p>
+                {PRO_FEATURES.map((f) => (
+                  <div key={f.label} className="flex items-center gap-1.5 text-xs text-text-primary py-0.5">
+                    <Check size={12} className="text-accent shrink-0" />
+                    {f.label}
+                  </div>
+                ))}
+              </div>
+            </div>
 
-            <div className="flex items-center justify-center gap-3 mb-5">
+            <div className="flex items-center justify-center gap-3 mb-4">
               <button
                 onClick={() => setAnnual(false)}
-                className={`rounded-lg px-3 py-1.5 text-sm transition-colors ${!annual ? 'bg-accent/10 text-accent font-medium' : 'text-text-muted hover:text-text-secondary'}`}
+                className={`rounded-md px-3 py-1.5 text-sm transition-colors ${!annual ? 'bg-accent-purple/10 text-accent-purple font-medium' : 'text-text-tertiary hover:text-text-secondary'}`}
               >
                 Mensuel
               </button>
               <button
                 onClick={() => setAnnual(true)}
-                className={`rounded-lg px-3 py-1.5 text-sm transition-colors ${annual ? 'bg-accent/10 text-accent font-medium' : 'text-text-muted hover:text-text-secondary'}`}
+                className={`rounded-md px-3 py-1.5 text-sm transition-colors ${annual ? 'bg-accent-purple/10 text-accent-purple font-medium' : 'text-text-tertiary hover:text-text-secondary'}`}
               >
                 Annuel
               </button>
             </div>
 
             <div className="text-center mb-5">
-              <span className="text-2xl font-bold text-text-primary">
+              <span className="text-2xl font-bold text-text-primary font-mono">
                 {annual ? '39€' : '4,99€'}
               </span>
-              <span className="text-sm text-text-muted">
+              <span className="text-sm text-text-tertiary ml-1">
                 {annual ? '/an' : '/mois'}
               </span>
               {annual && (
                 <Badge className="bg-accent/10 text-accent ml-2">
-                  −34 %
+                  -34 %
                 </Badge>
               )}
             </div>
@@ -136,8 +161,15 @@ export default function UpgradeModal({ open, onClose }: UpgradeModalProps) {
               {state === 'loading' ? (
                 <Loader2 size={16} className="animate-spin" />
               ) : null}
-              {state === 'loading' ? 'Traitement…' : 'Passer à Pro'}
+              {state === 'loading' ? 'Traitement...' : 'Passer à Pro'}
             </Button>
+
+            <button
+              onClick={onClose}
+              className="block w-full mt-3 text-center text-xs text-text-tertiary hover:text-text-secondary transition-colors"
+            >
+              Pas maintenant
+            </button>
           </>
         )}
       </div>

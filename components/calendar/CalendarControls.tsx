@@ -18,19 +18,19 @@ export default function CalendarControls({ year, month, onPrev, onNext, onToday 
       <div className="flex items-center gap-2">
         <button
           onClick={onToday}
-          className="rounded-lg px-3 py-1.5 text-xs text-text-secondary border border-border hover:bg-surface-hover transition-colors"
+          className="rounded-md px-3 py-2 text-xs text-text-secondary border border-border hover:bg-surface-hover transition-colors min-h-[44px]"
         >
           Aujourd&apos;hui
         </button>
         <button
           onClick={onPrev}
-          className="rounded-lg p-1.5 text-text-secondary hover:bg-surface-hover transition-colors"
+          className="flex items-center justify-center rounded-md p-2.5 text-text-secondary hover:bg-surface-hover transition-colors min-h-[44px] min-w-[44px]"
         >
           <ChevronLeft size={18} />
         </button>
         <button
           onClick={onNext}
-          className="rounded-lg p-1.5 text-text-secondary hover:bg-surface-hover transition-colors"
+          className="flex items-center justify-center rounded-md p-2.5 text-text-secondary hover:bg-surface-hover transition-colors min-h-[44px] min-w-[44px]"
         >
           <ChevronRight size={18} />
         </button>

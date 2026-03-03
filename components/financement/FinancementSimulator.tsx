@@ -153,8 +153,8 @@ export default function FinancementSimulator({ project }: FinancementSimulatorPr
   return (
     <div className="space-y-6">
       {/* Top row: budget bar + donut */}
-      <div className="grid gap-6 lg:grid-cols-3">
-        <Card className="p-5 lg:col-span-2">
+      <div className="grid gap-6 md:grid-cols-3">
+        <Card className="p-5 md:col-span-2">
           <BudgetBar covered={total} budget={project.budget} />
         </Card>
         <Card className="p-5 flex items-center justify-center">
@@ -176,10 +176,11 @@ export default function FinancementSimulator({ project }: FinancementSimulatorPr
           <h3 className="font-sans text-base font-semibold text-text-primary">
             Sources de financement
           </h3>
-          <div className="flex gap-2">
+          <div className="flex flex-wrap gap-2">
             <div className="relative">
               <Button
                 variant="secondary"
+                size="sm"
                 icon={Award}
                 onClick={() => { setShowAidePicker((v) => !v); setShowManualPicker(false); }}
               >
@@ -215,6 +216,7 @@ export default function FinancementSimulator({ project }: FinancementSimulatorPr
             <div className="relative">
               <Button
                 variant="secondary"
+                size="sm"
                 icon={Wallet}
                 onClick={() => { setShowManualPicker((v) => !v); setShowAidePicker(false); }}
               >

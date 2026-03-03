@@ -47,15 +47,15 @@ export default function CalendrierPage() {
         <div className="mt-3 flex items-center gap-4">
           <div className="flex items-center gap-1.5">
             <div className="h-2.5 w-2.5 rounded-full bg-accent" />
-            <span className="text-xs text-text-muted">Aides</span>
+            <span className="text-xs text-text-tertiary">Aides</span>
           </div>
           <div className="flex items-center gap-1.5">
             <div className="h-2.5 w-2.5 rounded-full bg-festival" />
-            <span className="text-xs text-text-muted">Festivals</span>
+            <span className="text-xs text-text-tertiary">Festivals</span>
           </div>
           <div className="flex items-center gap-1.5">
             <div className="h-2.5 w-2.5 rounded-full bg-blue-400" />
-            <span className="text-xs text-text-muted">Soumissions</span>
+            <span className="text-xs text-text-tertiary">Soumissions</span>
           </div>
         </div>
       </div>

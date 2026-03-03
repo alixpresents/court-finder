@@ -161,7 +161,7 @@ export default function ProjectForm({ editProject }: ProjectFormProps) {
         {errors.logline && <p className="mt-1 text-xs text-red-400">{errors.logline}</p>}
       </div>
 
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
         <div>
           <Select
             label="Genre"
@@ -186,7 +186,7 @@ export default function ProjectForm({ editProject }: ProjectFormProps) {
         </div>
       </div>
 
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
         <div>
           <Input
             label="Durée estimée (minutes)"

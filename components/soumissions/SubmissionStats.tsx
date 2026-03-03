@@ -19,7 +19,7 @@ export default function SubmissionStats({ submissions }: SubmissionStatsProps) {
   ];
 
   return (
-    <div className="grid grid-cols-4 gap-4">
+    <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
       {stats.map((s) => (
         <Card key={s.label} className="p-4 text-center">
           <p className={`text-2xl font-bold font-sans ${s.color}`}>{s.value}</p>

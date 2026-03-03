@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { ChevronDown, Plus, Settings, Film } from 'lucide-react';
 import { useProject } from '@/context/ProjectContext';
 
-export default function ProjectSwitcher() {
+export default function ProjectSwitcher({ onNavigate }: { onNavigate?: () => void }) {
   const { projects, activeProject, setActiveProject } = useProject();
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -57,7 +57,7 @@ export default function ProjectSwitcher() {
           <div className="border-t border-border py-1">
             <Link
               href="/projet/nouveau"
-              onClick={() => setOpen(false)}
+              onClick={() => { setOpen(false); onNavigate?.(); }}
               className="flex w-full items-center gap-2 px-3 py-2 text-sm text-text-secondary transition-colors hover:bg-surface-hover hover:text-text-primary"
             >
               <Plus size={14} />
@@ -65,7 +65,7 @@ export default function ProjectSwitcher() {
             </Link>
             <Link
               href="/projets"
-              onClick={() => setOpen(false)}
+              onClick={() => { setOpen(false); onNavigate?.(); }}
               className="flex w-full items-center gap-2 px-3 py-2 text-sm text-text-secondary transition-colors hover:bg-surface-hover hover:text-text-primary"
             >
               <Settings size={14} />

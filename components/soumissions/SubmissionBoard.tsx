@@ -13,26 +13,28 @@ interface SubmissionBoardProps {
 export default function SubmissionBoard({ submissions, onStatusChange, onRemove }: SubmissionBoardProps) {
   return (
     <Card className="overflow-hidden">
-      <table className="w-full">
-        <thead>
-          <tr className="border-b border-border bg-surface-hover/50">
-            <th className="px-4 py-3 text-left text-xs font-medium text-text-muted">Cible</th>
-            <th className="px-4 py-3 text-left text-xs font-medium text-text-muted">Statut</th>
-            <th className="px-4 py-3 text-left text-xs font-medium text-text-muted">Deadline</th>
-            <th className="px-4 py-3 text-left text-xs font-medium text-text-muted w-12"></th>
-          </tr>
-        </thead>
-        <tbody>
-          {submissions.map((sub) => (
-            <SubmissionRow
-              key={sub.id}
-              submission={sub}
-              onStatusChange={onStatusChange}
-              onRemove={onRemove}
-            />
-          ))}
-        </tbody>
-      </table>
+      <div className="overflow-x-auto">
+        <table className="w-full min-w-[500px]">
+          <thead>
+            <tr className="border-b border-border bg-surface-hover/50">
+              <th className="px-4 py-3 text-left text-xs font-medium text-text-tertiary">Cible</th>
+              <th className="px-4 py-3 text-left text-xs font-medium text-text-tertiary">Statut</th>
+              <th className="px-4 py-3 text-left text-xs font-medium text-text-tertiary">Deadline</th>
+              <th className="px-4 py-3 text-left text-xs font-medium text-text-tertiary w-12"></th>
+            </tr>
+          </thead>
+          <tbody>
+            {submissions.map((sub) => (
+              <SubmissionRow
+                key={sub.id}
+                submission={sub}
+                onStatusChange={onStatusChange}
+                onRemove={onRemove}
+              />
+            ))}
+          </tbody>
+        </table>
+      </div>
     </Card>
   );
 }
