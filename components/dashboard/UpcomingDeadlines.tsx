@@ -5,8 +5,7 @@ import { Award, Trophy, ArrowRight } from 'lucide-react';
 import Card from '@/components/ui/Card';
 import Badge from '@/components/ui/Badge';
 import DeadlineBadge from '@/components/ui/DeadlineBadge';
-import { aides } from '@/data/aides';
-import { festivals } from '@/data/festivals';
+import { useAdmin } from '@/context/AdminContext';
 import { formatShortDate, daysUntil } from '@/lib/dates';
 
 interface DeadlineItem {
@@ -18,6 +17,8 @@ interface DeadlineItem {
 }
 
 export default function UpcomingDeadlines() {
+  const { mergedAides: aides, mergedFestivals: festivals } = useAdmin();
+
   const allDeadlines: DeadlineItem[] = [
     ...aides.map((a) => ({
       id: a.id,

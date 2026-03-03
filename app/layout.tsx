@@ -6,6 +6,7 @@ import { AuthProvider } from '@/context/AuthContext';
 import { ProjectProvider } from '@/context/ProjectContext';
 import { PlanProvider } from '@/context/PlanContext';
 import { SubmissionsProvider } from '@/context/SubmissionsContext';
+import { AdminProvider } from '@/context/AdminContext';
 
 const dmSans = DM_Sans({
   variable: '--font-dm-sans',
@@ -40,13 +41,15 @@ export default function RootLayout({
     <html lang="fr">
       <body className={`${dmSans.variable} ${instrumentSerif.variable} ${jetbrainsMono.variable} antialiased`}>
         <AuthProvider>
-          <ProjectProvider>
-            <PlanProvider>
-              <SubmissionsProvider>
-                <AppShell>{children}</AppShell>
-              </SubmissionsProvider>
-            </PlanProvider>
-          </ProjectProvider>
+          <AdminProvider>
+            <ProjectProvider>
+              <PlanProvider>
+                <SubmissionsProvider>
+                  <AppShell>{children}</AppShell>
+                </SubmissionsProvider>
+              </PlanProvider>
+            </ProjectProvider>
+          </AdminProvider>
         </AuthProvider>
       </body>
     </html>

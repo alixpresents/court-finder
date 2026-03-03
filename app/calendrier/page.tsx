@@ -2,10 +2,9 @@
 
 import { useState, useMemo } from 'react';
 import { addMonths } from '@/lib/dates';
-import { aides } from '@/data/aides';
-import { festivals } from '@/data/festivals';
 import { useProject } from '@/context/ProjectContext';
 import { useSubmissions } from '@/context/SubmissionsContext';
+import { useAdmin } from '@/context/AdminContext';
 import CalendarControls from '@/components/calendar/CalendarControls';
 import CalendarGrid from '@/components/calendar/CalendarGrid';
 import type { CalendarEvent } from '@/lib/types';
@@ -13,6 +12,7 @@ import type { CalendarEvent } from '@/lib/types';
 export default function CalendrierPage() {
   const { activeProject } = useProject();
   const { submissions } = useSubmissions();
+  const { mergedAides: aides, mergedFestivals: festivals } = useAdmin();
   const [current, setCurrent] = useState(new Date());
 
   const year = current.getFullYear();
@@ -35,7 +35,7 @@ export default function CalendrierPage() {
       all.push({ id: `sub-${s.id}`, title: s.targetNom, date: s.deadline, type: 'soumission', targetId: s.targetId });
     });
     return all;
-  }, [filteredSubmissions]);
+  }, [filteredSubmissions, aides, festivals]);
 
   return (
     <div className="space-y-6">

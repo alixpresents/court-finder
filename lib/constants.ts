@@ -122,3 +122,23 @@ export const FINANCEMENT_CATEGORY_COLORS: Record<FinancementCategory, string> = 
   industrie_technique: '#F472B6',
   apport_personnel: '#94A3B8',
 };
+
+// Admin
+export const ADMIN_PASSWORD = 'courtfinder2025';
+
+export const ADMIN_ACTION_LABELS: Record<import('./types').AdminActionType, string> = {
+  create: 'Création',
+  update: 'Modification',
+  delete: 'Suppression',
+};
+
+export const ADMIN_ENTITY_LABELS: Record<import('./types').AdminEntityType, string> = {
+  aide: 'Aide',
+  festival: 'Festival',
+};
+
+export const ADMIN_ACTION_COLORS: Record<import('./types').AdminActionType, string> = {
+  create: 'bg-emerald-500/15 text-emerald-400',
+  update: 'bg-blue-500/15 text-blue-400',
+  delete: 'bg-red-500/15 text-red-400',
+};

@@ -155,3 +155,16 @@ export interface CalendarEvent {
   type: 'aide' | 'festival' | 'soumission';
   targetId: string;
 }
+
+export type AdminActionType = 'create' | 'update' | 'delete';
+export type AdminEntityType = 'aide' | 'festival';
+
+export interface AdminHistoryEntry {
+  id: string;
+  timestamp: string;
+  action: AdminActionType;
+  entityType: AdminEntityType;
+  entityId: string;
+  entityName: string;
+  changes?: Record<string, { before: unknown; after: unknown }>;
+}

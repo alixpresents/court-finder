@@ -4,7 +4,7 @@ import { useState, useMemo } from 'react';
 import { Plus, Check, ExternalLink } from 'lucide-react';
 import { useProject } from '@/context/ProjectContext';
 import { useSubmissions } from '@/context/SubmissionsContext';
-import { aides } from '@/data/aides';
+import { useAdmin } from '@/context/AdminContext';
 import { GENRES } from '@/data/genres';
 import { matchAide } from '@/lib/matching';
 import { filterAides, type AideFilters } from '@/lib/filters';
@@ -22,6 +22,7 @@ import type { Aide } from '@/lib/types';
 export default function AidesPage() {
   const { activeProject } = useProject();
   const { submissions, addSubmission } = useSubmissions();
+  const { mergedAides: aides } = useAdmin();
   const [filters, setFilters] = useState<AideFilters>({ search: '', type: '', genre: '' });
   const [selectedAide, setSelectedAide] = useState<Aide | null>(null);
 

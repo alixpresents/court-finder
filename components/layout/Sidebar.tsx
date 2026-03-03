@@ -1,15 +1,15 @@
 'use client';
 
-import { useMemo } from 'react';
-import { LayoutDashboard, Film, FolderOpen, Award, Trophy, Calendar, ClipboardList, DollarSign, Settings, Bell, LogOut, ArrowRight } from 'lucide-react';
+import { useMemo, useState } from 'react';
+import { LayoutDashboard, Film, FolderOpen, Award, Trophy, Calendar, ClipboardList, DollarSign, Settings, Bell, LogOut, ArrowRight, Shield, BarChart3, History } from 'lucide-react';
 import SidebarLink from './SidebarLink';
 import ProjectSwitcher from './ProjectSwitcher';
 import Badge from '@/components/ui/Badge';
+import AdminPasswordModal from '@/components/admin/AdminPasswordModal';
 import { useAuth } from '@/context/AuthContext';
 import { usePlan } from '@/context/PlanContext';
 import { useProject } from '@/context/ProjectContext';
-import { aides } from '@/data/aides';
-import { festivals } from '@/data/festivals';
+import { useAdmin } from '@/context/AdminContext';
 import { daysUntil } from '@/lib/dates';
 import { matchAide } from '@/lib/matching';
 
@@ -22,16 +22,18 @@ export default function Sidebar({ open, onClose }: SidebarProps) {
   const { signOut } = useAuth();
   const { isPro, upgrade, downgrade } = usePlan();
   const { activeProject, projects } = useProject();
+  const { isAdmin, logoutAdmin, mergedAides, mergedFestivals } = useAdmin();
+  const [showAdminModal, setShowAdminModal] = useState(false);
 
   const counts = useMemo(() => {
-    const eligibleAides = activeProject ? aides.filter((a) => matchAide(activeProject, a).score >= 50).length : 0;
-    const eligibleFestivals = activeProject ? festivals.filter((f) => daysUntil(f.deadline) >= 0).length : 0;
-    const urgentDeadlines = [...aides, ...festivals].filter((item) => {
+    const eligibleAides = activeProject ? mergedAides.filter((a) => matchAide(activeProject, a).score >= 50).length : 0;
+    const eligibleFestivals = activeProject ? mergedFestivals.filter((f) => daysUntil(f.deadline) >= 0).length : 0;
+    const urgentDeadlines = [...mergedAides, ...mergedFestivals].filter((item) => {
       const d = daysUntil(item.deadline);
       return d >= 0 && d < 7;
     }).length;
     return { eligibleAides, eligibleFestivals, urgentDeadlines };
-  }, [activeProject]);
+  }, [activeProject, mergedAides, mergedFestivals]);
 
   return (
     <aside
@@ -47,6 +49,9 @@ export default function Sidebar({ open, onClose }: SidebarProps) {
         <Badge className={isPro ? 'bg-accent/10 text-accent' : 'bg-white/8 text-text-tertiary'}>
           {isPro ? 'Pro' : 'Free'}
         </Badge>
+        {isAdmin && (
+          <Badge className="bg-accent-purple/10 text-accent-purple">Admin</Badge>
+        )}
       </div>
 
       {/* Project Switcher */}
@@ -102,10 +107,41 @@ export default function Sidebar({ open, onClose }: SidebarProps) {
         {activeProject && (
           <SidebarLink href={`/projet/${activeProject.id}/financement`} icon={DollarSign} label="Plan de financement" onClick={onClose} />
         )}
+
+        {/* ADMIN */}
+        {isAdmin && (
+          <>
+            <p className="px-2 pt-4 pb-1 text-[10px] font-semibold uppercase tracking-widest text-accent-purple/60">
+              Admin
+            </p>
+            <SidebarLink href="/admin" icon={BarChart3} label="Vue d'ensemble" onClick={onClose} />
+            <SidebarLink href="/admin/aides" icon={Award} label="Gérer les aides" onClick={onClose} />
+            <SidebarLink href="/admin/festivals" icon={Trophy} label="Gérer les festivals" onClick={onClose} />
+            <SidebarLink href="/admin/historique" icon={History} label="Historique" onClick={onClose} />
+          </>
+        )}
       </nav>
 
       {/* Bottom section */}
       <div className="border-t border-border px-3 py-2 space-y-1">
+        {isAdmin ? (
+          <button
+            onClick={logoutAdmin}
+            className="flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm font-medium text-accent-purple bg-accent-purple/8 hover:bg-accent-purple/15 transition-colors"
+          >
+            <Shield size={14} />
+            Quitter admin
+          </button>
+        ) : (
+          <button
+            onClick={() => setShowAdminModal(true)}
+            className="flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm text-text-tertiary hover:text-text-secondary hover:bg-surface-hover transition-colors"
+          >
+            <Shield size={14} />
+            Mode admin
+          </button>
+        )}
+
         {!isPro && (
           <button
             onClick={upgrade}
@@ -136,6 +172,8 @@ export default function Sidebar({ open, onClose }: SidebarProps) {
           </button>
         </div>
       </div>
+
+      <AdminPasswordModal open={showAdminModal} onClose={() => setShowAdminModal(false)} />
     </aside>
   );
 }

@@ -3,10 +3,10 @@
 import { use } from 'react';
 import { notFound } from 'next/navigation';
 import { Plus, Check } from 'lucide-react';
-import { aides } from '@/data/aides';
 import { REGIONS } from '@/data/regions';
 import { useProject } from '@/context/ProjectContext';
 import { useSubmissions } from '@/context/SubmissionsContext';
+import { useAdmin } from '@/context/AdminContext';
 import { matchAide } from '@/lib/matching';
 import { AIDE_TYPE_LABELS, AIDE_TYPE_COLORS, GENRE_LABELS } from '@/lib/constants';
 import DetailHeader from '@/components/detail/DetailHeader';
@@ -18,12 +18,13 @@ import Button from '@/components/ui/Button';
 
 export default function AideDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
-  const foundAide = aides.find((a) => a.id === id);
-  if (!foundAide) return notFound();
-  const aide = foundAide;
-
   const { activeProject } = useProject();
   const { submissions, addSubmission } = useSubmissions();
+  const { mergedAides } = useAdmin();
+
+  const foundAide = mergedAides.find((a) => a.id === id);
+  if (!foundAide) return notFound();
+  const aide = foundAide;
 
   const match = activeProject ? matchAide(activeProject, aide) : undefined;
   const alreadyTracked = submissions.some((s) => s.targetId === aide.id);

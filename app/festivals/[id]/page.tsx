@@ -3,9 +3,9 @@
 import { use } from 'react';
 import { notFound } from 'next/navigation';
 import { Plus, Check, AlertTriangle } from 'lucide-react';
-import { festivals } from '@/data/festivals';
 import { useProject } from '@/context/ProjectContext';
 import { useSubmissions } from '@/context/SubmissionsContext';
+import { useAdmin } from '@/context/AdminContext';
 import { matchFestival } from '@/lib/matching';
 import { detectPremiereConflicts } from '@/lib/premieres';
 import { FESTIVAL_CATEGORIE_LABELS, GENRE_LABELS, PREMIERE_TYPE_LABELS, PREMIERE_TYPE_COLORS } from '@/lib/constants';
@@ -18,12 +18,13 @@ import Button from '@/components/ui/Button';
 
 export default function FestivalDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
-  const foundFestival = festivals.find((f) => f.id === id);
-  if (!foundFestival) return notFound();
-  const festival = foundFestival;
-
   const { activeProject } = useProject();
   const { submissions, addSubmission } = useSubmissions();
+  const { mergedFestivals } = useAdmin();
+
+  const foundFestival = mergedFestivals.find((f) => f.id === id);
+  if (!foundFestival) return notFound();
+  const festival = foundFestival;
 
   const match = activeProject ? matchFestival(activeProject, festival) : undefined;
   const alreadyTracked = submissions.some((s) => s.targetId === festival.id);

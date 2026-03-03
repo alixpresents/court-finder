@@ -5,14 +5,13 @@ import { Award, Trophy, Calendar, ClipboardList, Film } from 'lucide-react';
 import { useProject } from '@/context/ProjectContext';
 import { usePlan } from '@/context/PlanContext';
 import { useSubmissions } from '@/context/SubmissionsContext';
+import { useAdmin } from '@/context/AdminContext';
 import EmptyState from '@/components/ui/EmptyState';
 import StatsRow from '@/components/dashboard/StatsRow';
 import ProjectTimeline from '@/components/dashboard/ProjectTimeline';
 import ActionCards from '@/components/dashboard/ActionCards';
 import UpcomingDeadlines from '@/components/dashboard/UpcomingDeadlines';
 import UpgradeModal from '@/components/upgrade/UpgradeModal';
-import { aides } from '@/data/aides';
-import { festivals } from '@/data/festivals';
 import { matchAide, matchFestival } from '@/lib/matching';
 import { daysUntil } from '@/lib/dates';
 
@@ -20,6 +19,7 @@ export default function DashboardPage() {
   const { activeProject, isHydrated } = useProject();
   const { isPro } = usePlan();
   const { submissions } = useSubmissions();
+  const { mergedAides: aides, mergedFestivals: festivals } = useAdmin();
   const [showUpgrade, setShowUpgrade] = useState(false);
 
   const greeting = useMemo(() => {

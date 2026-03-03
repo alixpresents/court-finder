@@ -4,7 +4,7 @@ import { useState, useMemo } from 'react';
 import { Plus, Check, ExternalLink, Trophy } from 'lucide-react';
 import { useProject } from '@/context/ProjectContext';
 import { useSubmissions } from '@/context/SubmissionsContext';
-import { festivals } from '@/data/festivals';
+import { useAdmin } from '@/context/AdminContext';
 import { GENRES } from '@/data/genres';
 import { matchFestival } from '@/lib/matching';
 import { getAllPremiereConflicts } from '@/lib/premieres';
@@ -21,12 +21,16 @@ import DeadlineBadge from '@/components/ui/DeadlineBadge';
 import MatchScore from '@/components/ui/MatchScore';
 import type { Festival } from '@/lib/types';
 
-const PAYS_OPTIONS = [...new Set(festivals.map((f) => f.pays))].sort().map((p) => ({ value: p, label: p }));
-
 export default function FestivalsPage() {
   const { activeProject } = useProject();
   const { submissions, addSubmission } = useSubmissions();
+  const { mergedFestivals: festivals } = useAdmin();
   const [filters, setFilters] = useState<FestivalFilters>({ search: '', genre: '', pays: '', oscarOnly: false });
+
+  const PAYS_OPTIONS = useMemo(
+    () => [...new Set(festivals.map((f) => f.pays))].sort().map((p) => ({ value: p, label: p })),
+    [festivals],
+  );
   const [selectedFestival, setSelectedFestival] = useState<Festival | null>(null);
 
   const conflictMap = useMemo(() => getAllPremiereConflicts(submissions), [submissions]);

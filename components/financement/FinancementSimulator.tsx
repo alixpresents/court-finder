@@ -8,7 +8,7 @@ import SourceRow from './SourceRow';
 import DonutChart from './DonutChart';
 import BudgetBar from './BudgetBar';
 import AlertsPanel from './AlertsPanel';
-import { aides as allAides } from '@/data/aides';
+import { useAdmin } from '@/context/AdminContext';
 import { matchAide } from '@/lib/matching';
 import { FINANCEMENT_CATEGORY_LABELS } from '@/lib/constants';
 import type { Project, FinancementSource, FinancementCategory } from '@/lib/types';
@@ -41,6 +41,7 @@ interface FinancementSimulatorProps {
 }
 
 export default function FinancementSimulator({ project }: FinancementSimulatorProps) {
+  const { mergedAides: allAides } = useAdmin();
   const [sources, setSources] = useState<FinancementSource[]>([]);
   const [hydrated, setHydrated] = useState(false);
   const [showAidePicker, setShowAidePicker] = useState(false);

@@ -53,4 +53,13 @@ export function getMonthName(month: number): string {
   return MONTHS_FR[month];
 }
 
+export function formatDateTime(dateStr: string): string {
+  const d = new Date(dateStr);
+  const day = d.getDate();
+  const month = MONTHS_FR[d.getMonth()].slice(0, 3) + '.';
+  const hours = d.getHours().toString().padStart(2, '0');
+  const minutes = d.getMinutes().toString().padStart(2, '0');
+  return `${day} ${month} ${hours}:${minutes}`;
+}
+
 export { DAYS_FR };
