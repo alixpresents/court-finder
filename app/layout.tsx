@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { DM_Sans, Instrument_Serif, JetBrains_Mono } from 'next/font/google';
+import { DM_Sans, DM_Mono, Instrument_Serif, JetBrains_Mono, Newsreader } from 'next/font/google';
 import './globals.css';
 import AppShell from '@/components/layout/AppShell';
 import { AuthProvider } from '@/context/AuthContext';
@@ -21,10 +21,23 @@ const instrumentSerif = Instrument_Serif({
   style: 'italic',
 });
 
+const dmMono = DM_Mono({
+  variable: '--font-dm-mono',
+  subsets: ['latin'],
+  weight: ['400', '500'],
+});
+
 const jetbrainsMono = JetBrains_Mono({
   variable: '--font-jetbrains-mono',
   subsets: ['latin'],
   weight: ['400', '500'],
+});
+
+const newsreader = Newsreader({
+  variable: '--font-newsreader',
+  subsets: ['latin'],
+  weight: ['300', '400'],
+  style: ['normal', 'italic'],
 });
 
 export const metadata: Metadata = {
@@ -39,7 +52,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr">
-      <body className={`${dmSans.variable} ${instrumentSerif.variable} ${jetbrainsMono.variable} antialiased`}>
+      <body className={`${dmSans.variable} ${dmMono.variable} ${instrumentSerif.variable} ${jetbrainsMono.variable} ${newsreader.variable} antialiased`}>
         <AuthProvider>
           <AdminProvider>
             <ProjectProvider>

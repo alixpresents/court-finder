@@ -65,7 +65,7 @@ export default function Sidebar({ open, onClose }: SidebarProps) {
         <p className="px-2 pt-3 pb-1 text-[10px] font-semibold uppercase tracking-widest text-text-tertiary">
           Mon projet
         </p>
-        <SidebarLink href="/" icon={LayoutDashboard} label="Dashboard" onClick={onClose} />
+        <SidebarLink href="/app" icon={LayoutDashboard} label="Dashboard" onClick={onClose} />
         <SidebarLink
           href={projects.length > 1 ? '/projets' : activeProject ? `/projet/${activeProject.id}` : '/projets'}
           icon={projects.length > 1 ? FolderOpen : Film}

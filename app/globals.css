@@ -109,6 +109,14 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-mono, 'JetBrains Mono', monospace);
 }
 
+.font-dm-mono {
+  font-family: var(--font-dm-mono, 'DM Mono', monospace);
+}
+
+.font-newsreader {
+  font-family: var(--font-newsreader, 'Newsreader', serif);
+}
+
 /* Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
@@ -192,6 +200,28 @@ h1, h2, h3, h4, h5, h6 {
 
 .animate-confetti {
   animation: confetti 600ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Landing page animations */
+@keyframes landing-reveal {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-seq {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: landing-reveal 800ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.reveal.revealed {
+  animation: landing-reveal 800ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: var(--delay, 0ms);
 }
 
 .skeleton {

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { usePathname } from 'next/navigation';
 import { Menu } from 'lucide-react';
 import { useAuth } from '@/context/AuthContext';
 import { useProject } from '@/context/ProjectContext';
@@ -10,9 +11,13 @@ import Sidebar from './Sidebar';
 import { ToastProvider } from '@/components/ui/ToastProvider';
 
 export default function AppShell({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
   const { session, isLoading } = useAuth();
   const { projects, isHydrated } = useProject();
   const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  // Landing page — bypass shell entirely
+  if (pathname === '/') return <>{children}</>;
 
   if (isLoading || !isHydrated) {
     return (
